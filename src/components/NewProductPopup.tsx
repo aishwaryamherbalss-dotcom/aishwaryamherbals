@@ -65,10 +65,10 @@ export const NewProductPopup = () => {
           </div>
           
           <p className="text-muted-foreground mb-2 leading-relaxed">
-            Gentle daily care for healthy, strong hair. Safe for regular use.
+            Gentle daily care for healthy hair. Light, non-sticky, suitable for everyday use.
           </p>
           <p className="text-xs text-primary mb-4">
-            நம்பிக்கையுடன் பயன்படுத்தலாம் • Trusted by Tamil Nadu families
+            ⭐ 4.8 | Loved by women & families
           </p>
           
           <div className="flex items-center justify-center gap-3 mb-6">
