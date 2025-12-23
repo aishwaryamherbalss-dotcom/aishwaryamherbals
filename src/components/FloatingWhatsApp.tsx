@@ -8,9 +8,8 @@ export const FloatingWhatsApp = () => {
   return (
     <div className="fixed bottom-24 right-4 md:bottom-8 md:right-8 z-40 flex flex-col items-end gap-2 animate-scale-in">
       {/* Tooltip on desktop */}
-      <div className="hidden md:block bg-background rounded-lg px-3 py-2 shadow-soft text-sm text-foreground max-w-[180px] text-right">
-        <p className="font-medium">Have doubts?</p>
-        <p className="text-xs text-muted-foreground">We're happy to help you choose</p>
+      <div className="hidden md:block bg-background rounded-lg px-3 py-2 shadow-soft text-sm text-foreground max-w-[200px] text-right">
+        <p className="font-medium">Have doubts? We're happy to help.</p>
       </div>
       <button
         onClick={handleWhatsApp}
