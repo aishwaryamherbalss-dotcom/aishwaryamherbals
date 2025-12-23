@@ -42,7 +42,7 @@ const reviews = [
     name: "Lakshmi N.",
     location: "Madurai",
     rating: 5,
-    text: "தினசரி பயன்படுத்த பாதுகாப்பானது. Even my daughter loves it!",
+    text: "தினசரி பயன்பாட்டுக்கு பாதுகாப்பானது. Even my daughter loves it!",
     product: "Herbal Shampoo",
     verified: true,
   },

@@ -73,7 +73,6 @@ export const NewProductPopup = () => {
           
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="font-serif text-2xl md:text-3xl font-bold text-primary">₹299</span>
-            <span className="text-muted-foreground line-through text-sm">₹599</span>
           </div>
           
           <div className="flex gap-3">
