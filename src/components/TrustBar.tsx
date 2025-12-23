@@ -1,10 +1,10 @@
 import { Leaf, IndianRupee, Heart, Users } from "lucide-react";
 
 const trustItems = [
-  { icon: Users, label: "Trusted by Tamil Nadu Families" },
-  { icon: Leaf, label: "Handmade Herbal Products" },
+  { icon: Users, label: "Handmade with Care" },
+  { icon: Leaf, label: "Herbal & Gentle" },
   { icon: IndianRupee, label: "Honest Everyday Pricing" },
-  { icon: Heart, label: "Women-Centric Care" },
+  { icon: Heart, label: "Safe for Regular Use" },
 ];
 
 export const TrustBar = () => {
@@ -23,7 +23,7 @@ export const TrustBar = () => {
           ))}
         </div>
         <p className="text-center text-xs md:text-sm text-muted-foreground mt-2">
-          வீட்டில் எல்லோருக்கும் ஏற்றது • Safe for the whole family
+          தினசரி பயன்படுத்த பாதுகாப்பானது • Safe for daily family use
         </p>
       </div>
     </div>

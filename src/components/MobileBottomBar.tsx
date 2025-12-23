@@ -20,7 +20,7 @@ export const MobileBottomBar = () => {
           className="flex-1 h-14 text-base font-semibold gap-2"
         >
           <ShoppingBag className="w-5 h-5" />
-          Buy Now
+          Buy with Confidence
         </Button>
         <Button 
           variant="whatsapp" 
@@ -29,7 +29,7 @@ export const MobileBottomBar = () => {
           onClick={handleWhatsApp}
         >
           <MessageCircle className="w-5 h-5" />
-          Order on WhatsApp
+          Talk to Us on WhatsApp
         </Button>
       </div>
     </div>
