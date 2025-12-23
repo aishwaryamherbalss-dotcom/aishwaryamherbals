@@ -9,7 +9,7 @@ const products = [
   {
     id: 1,
     name: "Herbal Hair Growth Serum",
-    benefit: "Gentle daily care for healthy, strong hair",
+    benefit: "Gentle daily care for healthy hair",
     price: 299,
     originalPrice: 599,
     rating: 4.9,
@@ -20,7 +20,7 @@ const products = [
   {
     id: 2,
     name: "Natural Herbal Shampoo",
-    benefit: "Soft, clean hair with every wash",
+    benefit: "Light, non-sticky, suitable for everyday use",
     price: 149,
     originalPrice: 299,
     rating: 4.8,
@@ -31,7 +31,7 @@ const products = [
   {
     id: 3,
     name: "Turmeric Glow Face Pack",
-    benefit: "Natural glow you can feel everyday",
+    benefit: "Natural glow for everyday freshness",
     price: 199,
     originalPrice: 399,
     rating: 4.9,
@@ -42,13 +42,13 @@ const products = [
   {
     id: 4,
     name: "Rose Petal Herbal Soap",
-    benefit: "Light, non-sticky, everyday freshness",
+    benefit: "Safe for regular family use",
     price: 79,
     originalPrice: 149,
     rating: 4.7,
     reviews: 1523,
     image: productSoap,
-    badge: "Safe for Family Use",
+    badge: "Loved by women & families",
   },
 ];
 

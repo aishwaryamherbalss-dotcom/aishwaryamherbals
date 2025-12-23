@@ -3,23 +3,23 @@ import { Sprout, Clock, Sparkles, Home } from "lucide-react";
 const reasons = [
   {
     icon: Sprout,
-    title: "Handmade with Love",
-    description: "Traditional herbal recipes made fresh, just like home",
+    title: "Handmade with Traditional Care",
+    description: "Made thoughtfully for daily family use",
   },
   {
     icon: Clock,
-    title: "Safe for Daily Use",
-    description: "Gentle enough for everyday care for you and your family",
+    title: "Herbal & Gentle Ingredients",
+    description: "No harsh feel, no unnecessary additives",
   },
   {
     icon: Sparkles,
-    title: "Pure Herbal Goodness",
-    description: "No harsh chemicals. Just nature's best for your skin",
+    title: "Honest Pricing Everyday",
+    description: "What you see is what you pay",
   },
   {
     icon: Home,
-    title: "Tamil Nadu Roots",
-    description: "Made locally with honest pricing you can trust",
+    title: "Rooted in Tamil Nadu Trust",
+    description: "Loved by homes across Tamil Nadu",
   },
 ];
 
@@ -33,10 +33,10 @@ export const WhyAishwaryam = () => {
             Our Promise to You
           </span>
           <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-3 md:mb-4">
-            Why Aishwaryam Herbals?
+            Why Choose Aishwaryam Herbals?
           </h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-            Handmade with care for everyday use. Honest pricing you can trust daily.
+            நம்பிக்கையுடன் பயன்படுத்தலாம் • Trusted by Tamil Nadu families
           </p>
         </div>
 
