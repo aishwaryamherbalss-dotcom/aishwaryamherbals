@@ -3,23 +3,23 @@ import { Leaf, IndianRupee, Heart, Users } from "lucide-react";
 const trustItems = [
   {
     icon: Leaf,
-    title: "Handmade Herbal Formulas",
-    description: "Traditional recipes passed down generations",
+    title: "Handmade with Care",
+    description: "Traditional herbal recipes made fresh for you",
   },
   {
     icon: IndianRupee,
-    title: "Honest Everyday Pricing",
-    description: "No fake MRP. No discount drama.",
+    title: "Honest Pricing Daily",
+    description: "What we say is what you pay. Always.",
   },
   {
     icon: Heart,
-    title: "Women-Centric Care",
-    description: "Made specially for Indian women's needs",
+    title: "Made for Women",
+    description: "Gentle care designed for everyday beauty",
   },
   {
     icon: Users,
-    title: "Loved by Tamil Nadu",
-    description: "10,000+ happy customers & counting",
+    title: "Loved by Families",
+    description: "Trusted by 10,000+ Tamil Nadu homes",
   },
 ];
 
@@ -47,7 +47,7 @@ export const TrustSignals = () => {
           ))}
         </div>
         <p className="text-center text-muted-foreground mt-6 md:mt-8 text-sm md:text-base">
-          ✨ Thousands of women trust Aishwaryam for their daily care.
+          தினசரி பயன்படுத்த பாதுகாப்பானது • Safe for daily use by your whole family
         </p>
       </div>
     </section>

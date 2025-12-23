@@ -9,7 +9,7 @@ const products = [
   {
     id: 1,
     name: "Herbal Hair Growth Serum",
-    benefit: "Reduces hair fall & promotes growth",
+    benefit: "Gentle daily care for healthy, strong hair",
     price: 299,
     originalPrice: 599,
     rating: 4.9,
@@ -20,18 +20,18 @@ const products = [
   {
     id: 2,
     name: "Natural Herbal Shampoo",
-    benefit: "Gentle cleansing with herbs",
+    benefit: "Soft, clean hair with every wash",
     price: 149,
     originalPrice: 299,
     rating: 4.8,
     reviews: 892,
     image: productShampoo,
-    badge: null,
+    badge: "Best for First-Time Users",
   },
   {
     id: 3,
     name: "Turmeric Glow Face Pack",
-    benefit: "Natural radiance & even skin tone",
+    benefit: "Natural glow you can feel everyday",
     price: 199,
     originalPrice: 399,
     rating: 4.9,
@@ -42,13 +42,13 @@ const products = [
   {
     id: 4,
     name: "Rose Petal Herbal Soap",
-    benefit: "Soft, moisturized skin daily",
+    benefit: "Light, non-sticky, everyday freshness",
     price: 79,
     originalPrice: 149,
     rating: 4.7,
     reviews: 1523,
     image: productSoap,
-    badge: "Best Value",
+    badge: "Safe for Family Use",
   },
 ];
 
@@ -59,13 +59,13 @@ export const BestSellers = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
           <span className="inline-block px-4 py-1.5 bg-sage-light text-primary text-sm font-medium rounded-full mb-4">
-            Customer Favorites
+            ⭐ Customer Favorites
           </span>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4">
-            Best Sellers
+            Most Loved by Our Customers
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Products loved and trusted by thousands of Tamil Nadu families
+            Tried, trusted, and reordered by Tamil Nadu families
           </p>
         </div>
 

@@ -6,7 +6,7 @@ const reviews = [
     name: "Priya Lakshmi",
     location: "Chennai",
     rating: 5,
-    text: "ரொம்ப நல்ல product. Regular-ஆ use பண்ணுறேன். My hair fall has reduced so much!",
+    text: "ரொம்ப நல்ல quality. Regular-ஆ use பண்றோம். Very gentle and my hair feels so much healthier!",
     product: "Hair Growth Serum",
     verified: true,
   },
@@ -15,7 +15,7 @@ const reviews = [
     name: "Kavitha R.",
     location: "Coimbatore",
     rating: 5,
-    text: "Worth every rupee. Pure herbal feel on my skin. My whole family uses their products now.",
+    text: "Very gentle and affordable. I use it daily. My whole family loves these products now.",
     product: "Rose Soap",
     verified: true,
   },
@@ -24,7 +24,7 @@ const reviews = [
     name: "Meenakshi S.",
     location: "Madurai",
     rating: 5,
-    text: "Finally found products that are both affordable and effective! No fake discounts, just honest pricing.",
+    text: "Worth for money. Pure herbal feel. No hidden charges, just honest pricing I can trust.",
     product: "Face Pack",
     verified: true,
   },
@@ -33,7 +33,7 @@ const reviews = [
     name: "Anjali Devi",
     location: "Trichy",
     rating: 5,
-    text: "என் அம்மாவும் நானும் use பண்றோம். Super soft skin! Love the natural fragrance.",
+    text: "என் அம்மாவும் நானும் use பண்றோம். Super soft skin! Safe for the whole family.",
     product: "Bath Powder",
     verified: true,
   },
@@ -42,7 +42,7 @@ const reviews = [
     name: "Lakshmi Narayanan",
     location: "Salem",
     rating: 5,
-    text: "Daily use பண்றேன். Very gentle on skin. Even my daughter loves the herbal shampoo!",
+    text: "தினசரி use பண்றேன். Very gentle on skin. Even my daughter asks for the herbal shampoo!",
     product: "Herbal Shampoo",
     verified: true,
   },
@@ -51,7 +51,7 @@ const reviews = [
     name: "Divya Prakash",
     location: "Tirunelveli",
     rating: 5,
-    text: "Best herbal products I've ever used. The turmeric face pack gave me such a natural glow!",
+    text: "நம்பிக்கையான products. The turmeric face pack gave me such a natural glow. Love it!",
     product: "Turmeric Face Pack",
     verified: true,
   },
@@ -67,10 +67,10 @@ export const CustomerReviews = () => {
             ⭐ 4.9 Average Rating
           </span>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4">
-            Loved by Our Customers
+            What Our Customers Say
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Real reviews from real customers across Tamil Nadu
+            Real words from real families across Tamil Nadu
           </p>
         </div>
 

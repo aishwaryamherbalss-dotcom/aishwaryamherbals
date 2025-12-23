@@ -7,7 +7,7 @@ const combos = [
   {
     id: 1,
     name: "First-Timer's Starter Kit",
-    description: "Perfect for trying our bestsellers",
+    description: "Perfect way to experience our bestsellers",
     items: ["Hair Serum", "Herbal Shampoo", "Face Soap"],
     price: 199,
     originalPrice: 399,
@@ -17,11 +17,11 @@ const combos = [
   {
     id: 2,
     name: "Daily Essentials Combo",
-    description: "Everything you need for daily care",
+    description: "Everything your family needs for daily care",
     items: ["Shampoo", "Conditioner", "Bath Powder", "Soap"],
     price: 299,
     originalPrice: 549,
-    tag: "Most Popular",
+    tag: "Family Favorite",
     image: productShampoo,
   },
 ];
@@ -34,13 +34,13 @@ export const StarterCombos = () => {
         <div className="text-center mb-8 md:mb-12">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent/20 text-accent-foreground text-sm font-medium rounded-full mb-4">
             <Gift className="w-4 h-4" />
-            Best for First-Time Users
+            Easy Way to Start
           </span>
           <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-3 md:mb-4">
             Perfect Starter Combos
           </h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-            Not sure where to start? Try our curated combos at honest prices
+            Not sure where to start? Try our curated combos at honest prices. No hidden charges.
           </p>
         </div>
 
