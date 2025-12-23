@@ -47,7 +47,7 @@ export const TrustSignals = () => {
           ))}
         </div>
         <p className="text-center text-muted-foreground mt-6 md:mt-8 text-sm md:text-base">
-          தினசரி பயன்படுத்த பாதுகாப்பானது • Safe for daily use by your whole family
+          வீட்டில் எல்லோருக்கும் ஏற்றது • Safe for the whole family
         </p>
       </div>
     </section>

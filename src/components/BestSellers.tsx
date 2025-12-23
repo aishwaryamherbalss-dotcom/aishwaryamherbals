@@ -101,8 +101,11 @@ export const BestSellers = () => {
                 <h3 className="font-serif text-sm md:text-lg font-semibold text-foreground mb-1 line-clamp-2 leading-tight">
                   {product.name}
                 </h3>
-                <p className="text-xs md:text-sm text-muted-foreground mb-2 md:mb-3 line-clamp-1">
+                <p className="text-xs md:text-sm text-muted-foreground mb-1 line-clamp-1">
                   {product.benefit}
+                </p>
+                <p className="text-xs text-olive-muted mb-2 md:mb-3">
+                  Herbal • Gentle • Regular use
                 </p>
 
                 {/* Rating */}
@@ -128,9 +131,6 @@ export const BestSellers = () => {
                 <div className="flex items-center gap-2 mb-3 md:mb-4">
                   <span className="font-serif text-lg md:text-2xl font-bold text-primary">
                     ₹{product.price}
-                  </span>
-                  <span className="text-xs md:text-sm text-muted-foreground line-through">
-                    ₹{product.originalPrice}
                   </span>
                 </div>
 

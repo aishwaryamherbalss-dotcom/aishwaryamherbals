@@ -10,7 +10,6 @@ const combos = [
     description: "Gentle shampoo + nourishing care. Designed for regular family use.",
     items: ["Hair Serum", "Herbal Shampoo", "Face Soap"],
     price: 199,
-    originalPrice: 399,
     tag: "Best for First-Time Users",
     image: productSerum,
   },
@@ -20,7 +19,6 @@ const combos = [
     description: "Simple, effective, affordable. Daily skin care without overthinking.",
     items: ["Shampoo", "Conditioner", "Bath Powder", "Soap"],
     price: 299,
-    originalPrice: 549,
     tag: "Family Favorite",
     image: productShampoo,
   },
@@ -84,12 +82,10 @@ export const StarterCombos = () => {
                 </div>
 
                 <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-baseline gap-2">
+                  <div className="flex flex-col">
+                    <span className="text-xs text-muted-foreground">Combo Price</span>
                     <span className="font-serif text-2xl md:text-3xl font-bold text-primary">
                       ₹{combo.price}
-                    </span>
-                    <span className="text-sm md:text-lg text-muted-foreground line-through">
-                      ₹{combo.originalPrice}
                     </span>
                   </div>
                   <Button variant="hero" size="default" className="h-11 md:h-12 px-4 md:px-6 text-sm md:text-base touch-target">

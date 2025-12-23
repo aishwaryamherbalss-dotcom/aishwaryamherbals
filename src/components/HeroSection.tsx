@@ -62,12 +62,12 @@ export const HeroSection = () => {
               <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-background/95 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-4 shadow-soft animate-float">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-xl md:text-2xl">💰</span>
+                    <span className="text-xl md:text-2xl">🌿</span>
                   </div>
                   <div>
-                    <p className="text-xs md:text-sm text-muted-foreground">We sell at</p>
+                    <p className="text-xs md:text-sm text-muted-foreground">Products from</p>
                     <p className="font-serif text-lg md:text-xl font-semibold text-primary">₹60</p>
-                    <p className="text-xs text-muted-foreground line-through">Others ₹120</p>
+                    <p className="text-xs text-muted-foreground">Honest Everyday Pricing</p>
                   </div>
                 </div>
               </div>
