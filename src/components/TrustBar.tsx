@@ -23,7 +23,7 @@ export const TrustBar = () => {
           ))}
         </div>
         <p className="text-center text-xs md:text-sm text-muted-foreground mt-2">
-          வீட்டில் எல்லோருக்கும் ஏற்றது • Safe for the whole family
+          தினசரி பயன்பாட்டுக்கு பாதுகாப்பானது • Safe for daily family use
         </p>
       </div>
     </div>
