@@ -70,7 +70,7 @@ export const CustomerReviews = () => {
             What Our Customers Say
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Real words from real families across Tamil Nadu
+            Loved by women and families across Tamil Nadu
           </p>
         </div>
 

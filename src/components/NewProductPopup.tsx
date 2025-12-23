@@ -68,7 +68,7 @@ export const NewProductPopup = () => {
             Gentle daily care for healthy, strong hair. Safe for regular use.
           </p>
           <p className="text-xs text-primary mb-4">
-            வீட்டில் எல்லோருக்கும் ஏற்றது • Safe for the whole family
+            Herbal • Gentle • Regular use
           </p>
           
           <div className="flex items-center justify-center gap-3 mb-6">
