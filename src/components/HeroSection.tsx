@@ -15,11 +15,11 @@ export const HeroSection = () => {
           <div className="text-center lg:text-left space-y-6 md:space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-sage-light rounded-full text-primary text-sm font-medium animate-fade-in">
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              Trusted by 10,000+ Tamil Nadu Families
+              நம்பிக்கையுடன் பயன்படுத்தலாம் • Trusted by Tamil Nadu Families
             </div>
             
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight animate-fade-in-up">
-              Pure Herbal Care for{" "}
+              Handmade Herbal Care for{" "}
               <span className="text-primary relative">
                 Everyday Beauty
                 <svg className="absolute -bottom-2 left-0 w-full h-3 text-accent/50" viewBox="0 0 200 12" fill="none">
@@ -30,12 +30,12 @@ export const HeroSection = () => {
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-200">
-              <span className="font-medium text-foreground">Handmade. Honest Pricing.</span>{" "}
-              Trusted by Tamil Nadu Families.
+              <span className="font-medium text-foreground">Handmade with care.</span>{" "}
+              Honest pricing you can trust daily.
             </p>
             
             <p className="text-base text-olive-muted animate-fade-in-up animation-delay-400">
-              No inflated prices. No fake offers. Just real herbal goodness for daily use.
+              Loved by families across Tamil Nadu. Safe for everyday use.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start animate-fade-in-up animation-delay-600">
@@ -45,7 +45,7 @@ export const HeroSection = () => {
               </Button>
               <Button variant="hero-outline" size="xl" className="gap-2 h-14 text-base md:text-lg touch-target hidden md:flex">
                 <MessageCircle className="w-5 h-5" />
-                Order Comfortably on WhatsApp
+                Order via WhatsApp
               </Button>
             </div>
           </div>

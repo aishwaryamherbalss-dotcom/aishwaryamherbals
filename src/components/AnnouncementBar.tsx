@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { Leaf, CheckCircle } from "lucide-react";
 
 const announcements = [
+  { text: "Everyday Honest Prices — No Fake Offers", icon: CheckCircle },
   { text: "What Others Sell at ₹120, We Sell at ₹60 — Daily", icon: Leaf },
-  { text: "Honest Pricing • No Fake Offers • Everyday Herbal Care", icon: CheckCircle },
+  { text: "Handmade Herbal Products Trusted Across Tamil Nadu", icon: Leaf },
+  { text: "Pure Ingredients. Real Results. Happy Customers.", icon: CheckCircle },
 ];
 
 export const AnnouncementBar = () => {
