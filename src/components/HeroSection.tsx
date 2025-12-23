@@ -35,7 +35,7 @@ export const HeroSection = () => {
             </p>
             
             <p className="text-base text-olive-muted animate-fade-in-up animation-delay-400">
-              No inflated prices. No fake offers. Just real herbal goodness for daily use.
+              Just honest herbal care for daily use.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start animate-fade-in-up animation-delay-600">
