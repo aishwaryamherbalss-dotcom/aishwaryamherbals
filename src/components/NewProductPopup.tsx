@@ -61,19 +61,19 @@ export const NewProductPopup = () => {
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
             ))}
-            <span className="text-sm text-muted-foreground ml-1">(1,247 reviews)</span>
+            <span className="text-sm text-muted-foreground ml-1">(1,247 happy customers)</span>
           </div>
           
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Loved by Tamil Women. Reduces hair fall naturally with Ayurvedic herbs.
+          <p className="text-muted-foreground mb-2 leading-relaxed">
+            Gentle daily care for healthy, strong hair. Safe for regular use.
+          </p>
+          <p className="text-xs text-primary mb-4">
+            நம்பிக்கையுடன் பயன்படுத்தலாம் • Trusted by Tamil Nadu families
           </p>
           
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="font-serif text-2xl md:text-3xl font-bold text-primary">₹299</span>
-            <span className="text-muted-foreground line-through">₹599</span>
-            <span className="px-2 py-1 bg-sage-light text-sage-dark text-xs font-semibold rounded-full">
-              Save ₹300
-            </span>
+            <span className="text-muted-foreground line-through text-sm">₹599</span>
           </div>
           
           <div className="flex gap-3">
@@ -81,9 +81,13 @@ export const NewProductPopup = () => {
               View Product
             </Button>
             <Button variant="outline" size="lg" onClick={handleClose} className="h-12 px-5">
-              Later
+              Maybe Later
             </Button>
           </div>
+          
+          <p className="text-xs text-muted-foreground mt-4">
+            You are choosing honest herbal care.
+          </p>
         </div>
       </div>
     </div>
