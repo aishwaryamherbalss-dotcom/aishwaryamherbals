@@ -38,12 +38,12 @@ export const HeroSection = () => {
               No inflated prices. No fake offers. Just real herbal goodness.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up animation-delay-600">
-              <Button variant="hero" size="xl" className="group">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start animate-fade-in-up animation-delay-600">
+              <Button variant="hero" size="xl" className="group h-14 text-base md:text-lg touch-target">
                 Shop Best Sellers
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Button>
-              <Button variant="hero-outline" size="xl" className="gap-2">
+              <Button variant="hero-outline" size="xl" className="gap-2 h-14 text-base md:text-lg touch-target hidden md:flex">
                 <MessageCircle className="w-5 h-5" />
                 Order via WhatsApp
               </Button>

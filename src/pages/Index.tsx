@@ -1,6 +1,7 @@
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
+import { TrustBar } from "@/components/TrustBar";
 import { TrustSignals } from "@/components/TrustSignals";
 import { BestSellers } from "@/components/BestSellers";
 import { StarterCombos } from "@/components/StarterCombos";
@@ -8,6 +9,8 @@ import { WhyAishwaryam } from "@/components/WhyAishwaryam";
 import { CustomerReviews } from "@/components/CustomerReviews";
 import { Footer } from "@/components/Footer";
 import { NewProductPopup } from "@/components/NewProductPopup";
+import { MobileBottomBar } from "@/components/MobileBottomBar";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Helmet } from "react-helmet-async";
 
 const Index = () => {
@@ -23,12 +26,13 @@ const Index = () => {
         <link rel="canonical" href="https://aishwaryamherbals.com" />
       </Helmet>
 
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background pb-20 md:pb-0">
         <AnnouncementBar />
         <Header />
         
         <main>
           <HeroSection />
+          <TrustBar />
           <TrustSignals />
           <BestSellers />
           <StarterCombos />
@@ -38,6 +42,8 @@ const Index = () => {
         
         <Footer />
         <NewProductPopup />
+        <MobileBottomBar />
+        <FloatingWhatsApp />
       </div>
     </>
   );

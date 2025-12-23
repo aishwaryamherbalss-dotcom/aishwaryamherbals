@@ -1,4 +1,4 @@
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, CheckCircle } from "lucide-react";
 
 const reviews = [
   {
@@ -8,6 +8,7 @@ const reviews = [
     rating: 5,
     text: "ரொம்ப நல்ல product. Regular-ஆ use பண்ணுறேன். My hair fall has reduced so much!",
     product: "Hair Growth Serum",
+    verified: true,
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const reviews = [
     rating: 5,
     text: "Worth every rupee. Pure herbal feel on my skin. My whole family uses their products now.",
     product: "Rose Soap",
+    verified: true,
   },
   {
     id: 3,
@@ -24,6 +26,7 @@ const reviews = [
     rating: 5,
     text: "Finally found products that are both affordable and effective! No fake discounts, just honest pricing.",
     product: "Face Pack",
+    verified: true,
   },
   {
     id: 4,
@@ -32,6 +35,25 @@ const reviews = [
     rating: 5,
     text: "என் அம்மாவும் நானும் use பண்றோம். Super soft skin! Love the natural fragrance.",
     product: "Bath Powder",
+    verified: true,
+  },
+  {
+    id: 5,
+    name: "Lakshmi Narayanan",
+    location: "Salem",
+    rating: 5,
+    text: "Daily use பண்றேன். Very gentle on skin. Even my daughter loves the herbal shampoo!",
+    product: "Herbal Shampoo",
+    verified: true,
+  },
+  {
+    id: 6,
+    name: "Divya Prakash",
+    location: "Tirunelveli",
+    rating: 5,
+    text: "Best herbal products I've ever used. The turmeric face pack gave me such a natural glow!",
+    product: "Turmeric Face Pack",
+    verified: true,
   },
 ];
 
@@ -53,17 +75,25 @@ export const CustomerReviews = () => {
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="bg-background rounded-2xl p-6 shadow-soft hover:shadow-medium transition-all duration-300 relative group"
+              className="bg-background rounded-2xl p-5 md:p-6 shadow-soft hover:shadow-medium transition-all duration-300 relative group"
             >
               {/* Quote Icon */}
-              <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/10 group-hover:text-primary/20 transition-colors" />
+              <Quote className="absolute top-4 right-4 w-6 h-6 md:w-8 md:h-8 text-primary/10 group-hover:text-primary/20 transition-colors" />
+
+              {/* Verified Badge */}
+              {review.verified && (
+                <div className="flex items-center gap-1 text-xs text-primary mb-3">
+                  <CheckCircle className="w-3.5 h-3.5" />
+                  <span className="font-medium">Verified Purchase</span>
+                </div>
+              )}
 
               {/* Stars */}
-              <div className="flex items-center gap-0.5 mb-4">
+              <div className="flex items-center gap-0.5 mb-3">
                 {[...Array(review.rating)].map((_, i) => (
                   <Star
                     key={i}
@@ -73,7 +103,7 @@ export const CustomerReviews = () => {
               </div>
 
               {/* Review Text */}
-              <p className="text-foreground mb-4 leading-relaxed">
+              <p className="text-foreground mb-4 leading-relaxed text-sm md:text-base">
                 "{review.text}"
               </p>
 
@@ -84,7 +114,7 @@ export const CustomerReviews = () => {
 
               {/* Reviewer Info */}
               <div className="flex items-center gap-3 pt-4 border-t border-border">
-                <div className="w-10 h-10 rounded-full bg-accent/30 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-accent/30 flex items-center justify-center flex-shrink-0">
                   <span className="text-sm font-semibold text-accent-foreground">
                     {review.name.charAt(0)}
                   </span>
