@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Leaf } from "lucide-react";
+import { Leaf, CheckCircle } from "lucide-react";
 
 const announcements = [
-  "🌿 Honest Prices Everyday — No Fake Discounts",
-  "Handmade Herbal Products Trusted Across Tamil Nadu",
-  "What Others Sell at ₹120, We Sell at ₹60 — Daily",
-  "🌸 Pure Ingredients. Real Results. Happy Customers.",
+  { text: "Everyday Honest Prices — No Fake Offers", icon: CheckCircle },
+  { text: "What Others Sell at ₹120, We Sell at ₹60 — Daily", icon: Leaf },
+  { text: "Handmade Herbal Products Trusted Across Tamil Nadu", icon: Leaf },
+  { text: "Pure Ingredients. Real Results. Happy Customers.", icon: CheckCircle },
 ];
 
 export const AnnouncementBar = () => {
@@ -18,17 +18,19 @@ export const AnnouncementBar = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const CurrentIcon = announcements[currentIndex].icon;
+
   return (
     <div className="bg-primary text-primary-foreground py-2.5 px-4 sticky top-0 z-50">
-      <div className="container flex items-center justify-center gap-2 text-sm font-medium">
-        <Leaf className="w-4 h-4 animate-pulse-soft" />
+      <div className="container flex items-center justify-center gap-2 text-sm md:text-base font-medium">
+        <CurrentIcon className="w-4 h-4 flex-shrink-0 animate-pulse-soft" />
         <span
           key={currentIndex}
-          className="animate-fade-in text-center"
+          className="animate-fade-in text-center line-clamp-1"
         >
-          {announcements[currentIndex]}
+          {announcements[currentIndex].text}
         </span>
-        <Leaf className="w-4 h-4 animate-pulse-soft" />
+        <CurrentIcon className="w-4 h-4 flex-shrink-0 animate-pulse-soft hidden sm:block" />
       </div>
     </div>
   );
