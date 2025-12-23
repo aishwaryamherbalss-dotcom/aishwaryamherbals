@@ -6,8 +6,8 @@ import productShampoo from "@/assets/product-shampoo.jpg";
 const combos = [
   {
     id: 1,
-    name: "First-Timer's Starter Kit",
-    description: "Perfect way to experience our bestsellers",
+    name: "Complete Hair Care Starter Combo",
+    description: "Gentle shampoo + nourishing care. Designed for regular family use.",
     items: ["Hair Serum", "Herbal Shampoo", "Face Soap"],
     price: 199,
     originalPrice: 399,
@@ -16,12 +16,12 @@ const combos = [
   },
   {
     id: 2,
-    name: "Daily Essentials Combo",
-    description: "Everything your family needs for daily care",
-    items: ["Shampoo", "Conditioner", "Bath Powder", "Soap"],
+    name: "Everyday Skin Care Essentials Combo",
+    description: "Simple, effective, affordable. Daily skin care without overthinking.",
+    items: ["Face Pack", "Rose Soap", "Bath Powder"],
     price: 299,
     originalPrice: 549,
-    tag: "Family Favorite",
+    tag: "Simple & Effective",
     image: productShampoo,
   },
 ];
@@ -40,7 +40,7 @@ export const StarterCombos = () => {
             Perfect Starter Combos
           </h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-            Not sure where to start? Try our curated combos at honest prices. No hidden charges.
+            Easy choices for first-time users
           </p>
         </div>
 
@@ -93,7 +93,7 @@ export const StarterCombos = () => {
                     </span>
                   </div>
                   <Button variant="hero" size="default" className="h-11 md:h-12 px-4 md:px-6 text-sm md:text-base touch-target">
-                    Get Combo
+                    Add Combo to Cart
                   </Button>
                 </div>
               </div>

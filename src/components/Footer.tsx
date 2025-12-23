@@ -97,7 +97,7 @@ export const Footer = () => {
       <div className="border-t border-primary-foreground/10">
         <div className="container py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-primary-foreground/60 text-center md:text-left">
-            Made with ❤️ in Tamil Nadu • © 2024 Aishwaryam Herbals. All rights reserved.
+            Made with care for everyday use • From Tamil Nadu with trust 🌿 • © 2024 Aishwaryam Herbals
           </p>
           <div className="flex items-center gap-4">
             <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors">
