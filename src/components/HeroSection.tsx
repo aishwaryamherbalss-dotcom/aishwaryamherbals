@@ -73,9 +73,6 @@ export const HeroSection = () => {
               </div>
             </div>
             
-            {/* Decorative Ring */}
-            <div className="hidden md:block absolute -top-4 -right-4 w-24 h-24 border-4 border-accent/30 rounded-full" />
-            <div className="hidden md:block absolute -bottom-6 -left-6 w-32 h-32 border-4 border-primary/20 rounded-full" />
           </div>
         </div>
       </div>
