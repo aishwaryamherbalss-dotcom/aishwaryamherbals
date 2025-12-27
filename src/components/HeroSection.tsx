@@ -1,10 +1,8 @@
 import { Button } from "./ui/button";
 import { MessageCircle } from "lucide-react";
 import heroImage from "@/assets/hero-products.jpg";
-
 export const HeroSection = () => {
-  return (
-    <section className="bg-hero-gradient relative overflow-hidden">
+  return <section className="bg-hero-gradient relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
@@ -23,7 +21,7 @@ export const HeroSection = () => {
               <span className="text-primary relative">
                 Everyday Beauty
                 <svg className="absolute -bottom-2 left-0 w-full h-3 text-accent/50" viewBox="0 0 200 12" fill="none">
-                  <path d="M2 8C50 2 150 2 198 8" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M2 8C50 2 150 2 198 8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
                 </svg>
               </span>{" "}
               & Wellness
@@ -43,12 +41,7 @@ export const HeroSection = () => {
                 Shop Best Sellers
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Button>
-              <a
-                href="https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I'm interested in your herbal products."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden md:flex"
-              >
+              <a href="https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I'm interested in your herbal products." target="_blank" rel="noopener noreferrer" className="hidden md:flex">
                 <Button variant="hero-outline" size="xl" className="gap-2 h-14 text-base md:text-lg touch-target">
                   <MessageCircle className="w-5 h-5" />
                   Order Comfortably on WhatsApp
@@ -60,11 +53,7 @@ export const HeroSection = () => {
           {/* Right Image */}
           <div className="relative lg:order-last animate-slide-in-right">
             <div className="relative aspect-[4/3] rounded-2xl md:rounded-3xl overflow-hidden shadow-medium">
-              <img
-                src={heroImage}
-                alt="Aishwaryam Herbals - Premium herbal beauty products including serums, soaps, and skincare"
-                className="w-full h-full object-cover"
-              />
+              <img alt="Aishwaryam Herbals - Premium herbal beauty products including serums, soaps, and skincare" className="w-full h-full object-cover" src="/lovable-uploads/787c8994-539b-4c3d-b78f-35ed678308f5.png" />
               {/* Floating Badge */}
               <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-background/95 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-4 shadow-soft animate-float">
                 <div className="flex items-center gap-3">
@@ -83,6 +72,5 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
