@@ -214,7 +214,8 @@ export const HeroSlider = () => {
         </div>
 
         {/* Floating Badge */}
-        <div className="absolute bottom-6 left-4 md:bottom-8 md:left-8 bg-background/95 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-4 shadow-soft animate-float hidden md:block z-10">
+        {/* Trust Badge - Always visible on desktop and mobile */}
+        <div className="absolute bottom-20 left-4 md:bottom-8 md:left-8 bg-background/95 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-4 shadow-soft z-10">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center">
               <span className="text-xl md:text-2xl">🌿</span>

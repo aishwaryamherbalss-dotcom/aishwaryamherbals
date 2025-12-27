@@ -18,6 +18,9 @@ export const MobileBottomBar = () => {
           variant="hero" 
           size="lg" 
           className="flex-1 h-14 text-base font-semibold gap-2"
+          onClick={() => {
+            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+          }}
         >
           <ShoppingBag className="w-5 h-5" />
           Buy with Confidence
