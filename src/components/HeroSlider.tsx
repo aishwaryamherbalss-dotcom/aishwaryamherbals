@@ -4,12 +4,14 @@ import { MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import { motion } from "framer-motion";
 import { heroSlides, HERO_FALLBACK_IMAGE } from "@/data/heroSlides";
 
 export const HeroSlider = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ delay: 5000, stopOnInteraction: false }),
-  ]);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, direction: "ltr" },
+    [Autoplay({ delay: 5000, stopOnInteraction: false })]
+  );
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const scrollPrev = useCallback(() => {
@@ -45,16 +47,33 @@ export const HeroSlider = () => {
     e.currentTarget.src = HERO_FALLBACK_IMAGE;
   };
 
+  // Badge animation config
+  const badgeAnimation = {
+    scale: [1, 1.02, 1],
+    boxShadow: [
+      "0 4px 12px rgba(var(--primary-rgb), 0.15)",
+      "0 6px 20px rgba(var(--primary-rgb), 0.25)",
+      "0 4px 12px rgba(var(--primary-rgb), 0.15)",
+    ],
+  };
+
+  const badgeTransition = {
+    duration: 2.2,
+    ease: [0.42, 0, 0.58, 1] as [number, number, number, number],
+    repeat: Infinity,
+    repeatType: "mirror" as const,
+  };
+
   return (
-    <section className="bg-hero-gradient relative overflow-hidden">
+    <section className="bg-hero-gradient relative overflow-hidden" dir="ltr">
       {/* Decorative Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
 
       <div className="container relative py-12 md:py-20 lg:py-28">
-        {/* Slider Container */}
-        <div ref={emblaRef} className="overflow-hidden">
-          <div className="flex touch-pan-y">
+        {/* Slider Container - explicit LTR */}
+        <div ref={emblaRef} className="overflow-hidden" dir="ltr">
+          <div className="flex touch-pan-y" style={{ direction: "ltr" }}>
             {heroSlides.map((slide) => (
               <div key={slide.id} className="flex-[0_0_100%] min-w-0">
                 <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -131,8 +150,12 @@ export const HeroSlider = () => {
                         className="w-full h-full object-cover object-center"
                         onError={handleImageError}
                       />
-                      {/* Floating Badge - Products from ₹60 */}
-                      <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-background/95 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-4 shadow-soft hero-badge-pulse">
+                      {/* Floating Badge - Products from ₹60 with Framer Motion */}
+                      <motion.div
+                        className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-background/95 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-4 shadow-soft"
+                        animate={badgeAnimation}
+                        transition={badgeTransition}
+                      >
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center">
                             <span className="text-xl md:text-2xl">🌿</span>
@@ -143,7 +166,7 @@ export const HeroSlider = () => {
                             <p className="text-xs text-muted-foreground">Honest Everyday Pricing</p>
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
                 </div>
