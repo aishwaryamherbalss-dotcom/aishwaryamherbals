@@ -132,7 +132,7 @@ export const HeroSlider = () => {
                         onError={handleImageError}
                       />
                       {/* Floating Badge - Products from ₹60 */}
-                      <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-background/95 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-4 shadow-soft animate-glow-pulse">
+                      <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-background/95 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-4 shadow-soft hero-badge-pulse">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center">
                             <span className="text-xl md:text-2xl">🌿</span>
