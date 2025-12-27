@@ -73,7 +73,7 @@ export const ProductCard = ({ product, showBadge = true }: ProductCardProps) => 
         </div>
 
         <p className="text-xs text-sage-dark mb-3">
-          {product.size} • Herbal • Gentle
+          Herbal • Gentle • Regular use
         </p>
 
         <div className="flex items-center justify-between gap-2 mb-3">

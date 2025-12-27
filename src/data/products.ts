@@ -3,7 +3,7 @@ import productShampoo from "@/assets/product-shampoo.jpg";
 import productFacepack from "@/assets/product-facepack.jpg";
 import productSoap from "@/assets/product-soap.jpg";
 
-export type ProductCategory = "skin-care" | "hair-care";
+export type ProductCategory = "skin-care" | "hair-care" | "face-packs";
 
 export interface Product {
   id: string;
@@ -103,7 +103,7 @@ export const products: Product[] = [
     description: "A traditional face pack made with time-tested herbal ingredients. Cleanses deeply while nourishing your skin naturally.",
     price: 179,
     size: "100 g",
-    category: "skin-care",
+    category: "face-packs",
     image: productFacepack,
     badge: "Best for First-Time Users",
     isBestSeller: true,

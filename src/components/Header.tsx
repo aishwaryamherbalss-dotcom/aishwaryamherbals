@@ -1,12 +1,18 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X, ShoppingBag, Globe } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, ShoppingBag, Globe, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { useCart } from "@/contexts/CartContext";
 
+const shopDropdownItems = [
+  { name: "All Products", href: "/shop" },
+  { name: "Skin Care", href: "/shop/skin-care" },
+  { name: "Hair Care", href: "/shop/hair-care" },
+  { name: "Face Packs", href: "/shop/face-packs" },
+];
+
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Shop", href: "/shop" },
   { name: "Best Sellers", href: "/best-sellers" },
   { name: "Combos", href: "/combos" },
   { name: "About Us", href: "/about" },
@@ -16,9 +22,34 @@ const navLinks = [
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false);
+  const [isMobileShopOpen, setIsMobileShopOpen] = useState(false);
   const [language, setLanguage] = useState<"EN" | "தமிழ்">("EN");
   const { getItemCount } = useCart();
   const itemCount = getItemCount();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsShopDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setIsMobileShopOpen(false);
+    setIsShopDropdownOpen(false);
+  }, [location.pathname]);
+
+  const isShopActive = location.pathname.startsWith("/shop");
 
   return (
     <header className="bg-background/95 backdrop-blur-md border-b border-border sticky top-10 z-40">
@@ -41,11 +72,54 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
+            <Link
+              to="/"
+              className={`text-sm font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full ${
+                location.pathname === "/" ? "text-primary after:w-full" : "text-foreground/80 hover:text-primary"
+              }`}
+            >
+              Home
+            </Link>
+
+            {/* Shop Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsShopDropdownOpen(!isShopDropdownOpen)}
+                className={`flex items-center gap-1 text-sm font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full ${
+                  isShopActive ? "text-primary after:w-full" : "text-foreground/80 hover:text-primary"
+                }`}
+              >
+                Shop
+                <ChevronDown className={`w-4 h-4 transition-transform ${isShopDropdownOpen ? "rotate-180" : ""}`} />
+              </button>
+
+              {isShopDropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-48 bg-background border border-border rounded-xl shadow-medium py-2 animate-fade-in z-50">
+                  {shopDropdownItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={`block px-4 py-2.5 text-sm font-medium transition-colors ${
+                        location.pathname === item.href
+                          ? "text-primary bg-primary/5"
+                          : "text-foreground hover:text-primary hover:bg-secondary"
+                      }`}
+                      onClick={() => setIsShopDropdownOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {navLinks.slice(1).map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
+                className={`text-sm font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full ${
+                  location.pathname === link.href ? "text-primary after:w-full" : "text-foreground/80 hover:text-primary"
+                }`}
               >
                 {link.name}
               </Link>
@@ -91,16 +165,61 @@ export const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden border-t border-border animate-fade-in">
             <nav className="py-4 space-y-1">
-              {navLinks.map((link) => (
+              <Link
+                to="/"
+                className={`block px-4 py-3 text-base font-medium rounded-lg transition-colors ${
+                  location.pathname === "/" ? "text-primary bg-primary/5" : "text-foreground hover:bg-secondary"
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </Link>
+
+              {/* Mobile Shop Dropdown */}
+              <div>
+                <button
+                  onClick={() => setIsMobileShopOpen(!isMobileShopOpen)}
+                  className={`flex items-center justify-between w-full px-4 py-3 text-base font-medium rounded-lg transition-colors ${
+                    isShopActive ? "text-primary bg-primary/5" : "text-foreground hover:bg-secondary"
+                  }`}
+                >
+                  Shop
+                  <ChevronDown className={`w-5 h-5 transition-transform ${isMobileShopOpen ? "rotate-180" : ""}`} />
+                </button>
+
+                {isMobileShopOpen && (
+                  <div className="pl-4 mt-1 space-y-1 animate-fade-in">
+                    {shopDropdownItems.map((item) => (
+                      <Link
+                        key={item.name}
+                        to={item.href}
+                        className={`block px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+                          location.pathname === item.href
+                            ? "text-primary bg-primary/5"
+                            : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                        }`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {navLinks.slice(1).map((link) => (
                 <Link
                   key={link.name}
                   to={link.href}
-                  className="block px-4 py-3 text-base font-medium text-foreground hover:bg-secondary rounded-lg transition-colors"
+                  className={`block px-4 py-3 text-base font-medium rounded-lg transition-colors ${
+                    location.pathname === link.href ? "text-primary bg-primary/5" : "text-foreground hover:bg-secondary"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
               ))}
+
               <button
                 onClick={() => setLanguage(language === "EN" ? "தமிழ்" : "EN")}
                 className="flex items-center gap-2 px-4 py-3 text-base font-medium text-foreground hover:bg-secondary rounded-lg transition-colors w-full"
