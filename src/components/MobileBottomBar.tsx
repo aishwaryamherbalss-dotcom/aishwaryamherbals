@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 export const MobileBottomBar = () => {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/919876543210?text=Hi! I'm interested in Aishwaryam Herbals products. Can you help me choose?", "_blank");
+    window.open("https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I'm interested in your herbal products.", "_blank");
   };
 
   return (
