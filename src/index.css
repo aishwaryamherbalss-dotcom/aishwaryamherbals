@@ -186,4 +186,15 @@
     min-height: 44px;
     min-width: 44px;
   }
+
+  /* Hero badge pulse animation with reduced-motion support */
+  .hero-badge-pulse {
+    animation: soft-pulse 2.2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-badge-pulse {
+      animation: none;
+    }
+  }
 }
