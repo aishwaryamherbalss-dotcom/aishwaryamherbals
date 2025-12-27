@@ -31,11 +31,11 @@ export const NewProductPopup = () => {
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-foreground/30 backdrop-blur-sm animate-fade-in">
       <div className="bg-background rounded-3xl shadow-lg max-w-sm w-full overflow-hidden animate-scale-in">
         {/* Image */}
-        <div className="relative aspect-[4/3] bg-sage-light">
+        <div className="relative bg-sage-light py-6 px-4 flex items-center justify-center" style={{ maxHeight: '55%' }}>
           <img
             src={brighteningSerum}
             alt="Brightening Serum - New Launch"
-            className="w-full h-full object-contain p-4"
+            className="max-h-48 w-auto object-contain mx-auto"
           />
           <button
             onClick={handleClose}
