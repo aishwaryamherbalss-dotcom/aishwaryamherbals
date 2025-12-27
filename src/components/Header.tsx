@@ -1,27 +1,31 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, ShoppingBag, Globe } from "lucide-react";
 import { Button } from "./ui/button";
+import { useCart } from "@/contexts/CartContext";
 
 const navLinks = [
-  { name: "Home", href: "/", external: false },
-  { name: "Shop", href: "/shop", external: false },
-  { name: "Best Sellers", href: "/best-sellers", external: false },
-  { name: "Combos", href: "/combos", external: false },
-  { name: "About Us", href: "#about", external: false },
-  { name: "Reviews", href: "#reviews", external: false },
-  { name: "Contact", href: "#contact", external: false },
+  { name: "Home", href: "/" },
+  { name: "Shop", href: "/shop" },
+  { name: "Best Sellers", href: "/best-sellers" },
+  { name: "Combos", href: "/combos" },
+  { name: "About Us", href: "/about" },
+  { name: "Reviews", href: "/reviews" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [language, setLanguage] = useState<"EN" | "தமிழ்">("EN");
+  const { getItemCount } = useCart();
+  const itemCount = getItemCount();
 
   return (
     <header className="bg-background/95 backdrop-blur-md border-b border-border sticky top-10 z-40">
       <div className="container">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 flex items-center justify-center">
               <span className="text-xl md:text-2xl">🌿</span>
             </div>
@@ -33,20 +37,18 @@ export const Header = () => {
                 HERBALS
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
+                to={link.href}
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -62,11 +64,15 @@ export const Header = () => {
             </button>
 
             {/* Cart */}
-            <Button variant="ghost" size="icon" className="relative">
-              <ShoppingBag className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground text-xs font-bold rounded-full flex items-center justify-center">
-                2
-              </span>
+            <Button asChild variant="ghost" size="icon" className="relative">
+              <Link to="/cart">
+                <ShoppingBag className="w-5 h-5" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-accent-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                    {itemCount}
+                  </span>
+                )}
+              </Link>
             </Button>
 
             {/* Mobile Menu Button */}
@@ -86,16 +92,14 @@ export const Header = () => {
           <div className="lg:hidden border-t border-border animate-fade-in">
             <nav className="py-4 space-y-1">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
+                  to={link.href}
                   className="block px-4 py-3 text-base font-medium text-foreground hover:bg-secondary rounded-lg transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
               <button
                 onClick={() => setLanguage(language === "EN" ? "தமிழ்" : "EN")}

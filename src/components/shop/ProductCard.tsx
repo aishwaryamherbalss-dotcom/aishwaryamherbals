@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { Star } from "lucide-react";
+import { Star, ShoppingCart, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Product } from "@/data/products";
+import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
 
 interface ProductCardProps {
   product: Product;
@@ -9,6 +11,18 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ product, showBadge = true }: ProductCardProps) => {
+  const { addToCart } = useCart();
+  const { toast } = useToast();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    addToCart(product);
+    toast({
+      title: "Added to cart",
+      description: `${product.name} has been added to your cart.`,
+    });
+  };
+
   return (
     <div className="bg-background rounded-2xl overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 group">
       <Link to={`/product/${product.slug}`} className="block">
@@ -36,15 +50,11 @@ export const ProductCard = ({ product, showBadge = true }: ProductCardProps) => 
           </h3>
         </Link>
         
-        <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
+        <p className="text-muted-foreground text-sm mb-2 line-clamp-2">
           {product.benefit}
         </p>
 
-        <p className="text-xs text-sage-dark mb-3">
-          Herbal • Gentle • Regular use
-        </p>
-
-        <div className="flex items-center gap-1.5 mb-4">
+        <div className="flex items-center gap-1.5 mb-2">
           <div className="flex items-center gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star
@@ -62,12 +72,31 @@ export const ProductCard = ({ product, showBadge = true }: ProductCardProps) => 
           </span>
         </div>
 
-        <div className="flex items-center justify-between gap-3">
+        <p className="text-xs text-sage-dark mb-3">
+          {product.size} • Herbal • Gentle
+        </p>
+
+        <div className="flex items-center justify-between gap-2 mb-3">
           <span className="font-serif text-xl md:text-2xl font-bold text-primary">
             ₹{product.price}
           </span>
-          <Button asChild variant="outline" size="sm" className="text-sm">
-            <Link to={`/product/${product.slug}`}>View Product</Link>
+        </div>
+
+        <div className="flex gap-2">
+          <Button
+            variant="hero"
+            size="sm"
+            className="flex-1 text-xs"
+            onClick={handleAddToCart}
+          >
+            <ShoppingCart className="w-3.5 h-3.5 mr-1" />
+            Add to Cart
+          </Button>
+          <Button asChild variant="outline" size="sm" className="text-xs">
+            <Link to={`/product/${product.slug}`}>
+              <Eye className="w-3.5 h-3.5 mr-1" />
+              Details
+            </Link>
           </Button>
         </div>
       </div>
