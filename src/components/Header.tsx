@@ -3,10 +3,10 @@ import { Menu, X, ShoppingBag, Globe } from "lucide-react";
 import { Button } from "./ui/button";
 
 const navLinks = [
-  { name: "Home", href: "https://aishwaryamherbals.lovable.app", external: false },
-  { name: "Shop", href: "https://aishwaryamherbals.com/shop", external: true },
-  { name: "Best Sellers", href: "https://aishwaryamherbals.com/product-tag/best-seller", external: true },
-  { name: "Combos", href: "https://aishwaryamherbals.com/product-category/combos", external: true },
+  { name: "Home", href: "/", external: false },
+  { name: "Shop", href: "/shop", external: false },
+  { name: "Best Sellers", href: "/best-sellers", external: false },
+  { name: "Combos", href: "/combos", external: false },
   { name: "About Us", href: "#about", external: false },
   { name: "Reviews", href: "#reviews", external: false },
   { name: "Contact", href: "#contact", external: false },
