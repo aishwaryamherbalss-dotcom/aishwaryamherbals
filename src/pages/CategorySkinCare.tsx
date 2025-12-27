@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { getProductsByCategory } from "@/data/products";

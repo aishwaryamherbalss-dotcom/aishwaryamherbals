@@ -1,6 +1,6 @@
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Header } from "@/components/Header";
-import { HeroSection } from "@/components/HeroSection";
+import { HeroSlider } from "@/components/HeroSlider";
 import { TrustBar } from "@/components/TrustBar";
 import { TrustSignals } from "@/components/TrustSignals";
 import { BestSellers } from "@/components/BestSellers";
@@ -11,6 +11,7 @@ import { Footer } from "@/components/Footer";
 import { NewProductPopup } from "@/components/NewProductPopup";
 import { MobileBottomBar } from "@/components/MobileBottomBar";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { SocialProofToast } from "@/components/SocialProofToast";
 import { Helmet } from "react-helmet-async";
 
 const Index = () => {
@@ -31,7 +32,7 @@ const Index = () => {
         <Header />
         
         <main>
-          <HeroSection />
+          <HeroSlider />
           <TrustBar />
           <TrustSignals />
           <BestSellers />
@@ -44,6 +45,7 @@ const Index = () => {
         <NewProductPopup />
         <MobileBottomBar />
         <FloatingWhatsApp />
+        <SocialProofToast />
       </div>
     </>
   );
