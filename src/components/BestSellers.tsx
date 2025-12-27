@@ -1,6 +1,6 @@
 import { Star, ShoppingCart } from "lucide-react";
 import { Button } from "./ui/button";
-import brighteningSerum from "@/assets/brightening-serum-bottle.png";
+import productSerum from "@/assets/product-serum.jpg";
 import productShampoo from "@/assets/product-shampoo.jpg";
 import productFacepack from "@/assets/product-facepack.jpg";
 import productSoap from "@/assets/product-soap.jpg";
@@ -8,13 +8,13 @@ import productSoap from "@/assets/product-soap.jpg";
 const products = [
   {
     id: 1,
-    name: "Brightening Serum",
-    benefit: "Light on Skin. Strong on Glow.",
-    price: 199,
-    originalPrice: 399,
+    name: "Herbal Hair Growth Serum",
+    benefit: "Gentle daily care for healthy hair",
+    price: 299,
+    originalPrice: 599,
     rating: 4.9,
     reviews: 1247,
-    image: brighteningSerum,
+    image: productSerum,
     badge: "Most Loved by Women",
   },
   {

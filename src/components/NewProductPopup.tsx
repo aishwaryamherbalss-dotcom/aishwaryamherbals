@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { X, Sparkles, Star } from "lucide-react";
 import { Button } from "./ui/button";
-import brighteningSerum from "@/assets/brightening-serum-bottle.png";
+import productSerum from "@/assets/product-serum.jpg";
 
 const SESSION_KEY = "aishwaryam_popup_shown";
 
@@ -31,11 +31,11 @@ export const NewProductPopup = () => {
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-foreground/30 backdrop-blur-sm animate-fade-in">
       <div className="bg-background rounded-3xl shadow-lg max-w-sm w-full overflow-hidden animate-scale-in">
         {/* Image */}
-        <div className="relative bg-sage-light py-6 px-4 flex items-center justify-center" style={{ maxHeight: '55%' }}>
+        <div className="relative aspect-[4/3] bg-sage-light">
           <img
-            src={brighteningSerum}
-            alt="Brightening Serum - New Launch"
-            className="max-h-48 w-auto object-contain mx-auto"
+            src={productSerum}
+            alt="Herbal Hair Growth Serum - New Launch"
+            className="w-full h-full object-cover"
           />
           <button
             onClick={handleClose}
@@ -53,7 +53,7 @@ export const NewProductPopup = () => {
         {/* Content */}
         <div className="p-6 text-center">
           <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-2">
-            Brightening Serum
+            Herbal Hair Growth Serum
           </h3>
           
           {/* Rating */}
@@ -65,14 +65,14 @@ export const NewProductPopup = () => {
           </div>
           
           <p className="text-muted-foreground mb-2 leading-relaxed">
-            Light on Skin. Strong on Glow. Safe for regular use.
+            Gentle daily care for healthy, strong hair. Safe for regular use.
           </p>
           <p className="text-xs text-primary mb-4">
             வீட்டில் எல்லோருக்கும் ஏற்றது • Safe for the whole family
           </p>
           
           <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="font-serif text-2xl md:text-3xl font-bold text-primary">₹199</span>
+            <span className="font-serif text-2xl md:text-3xl font-bold text-primary">₹299</span>
           </div>
           
           <div className="flex gap-3">
