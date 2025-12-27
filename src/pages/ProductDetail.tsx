@@ -1,11 +1,12 @@
 import { useParams, Link } from "react-router-dom";
-import { Star, Check, ChevronLeft, MessageCircle, ShoppingCart, Quote, CheckCircle } from "lucide-react";
+import { Star, Check, ChevronLeft, MessageCircle, ShoppingCart, Quote, CheckCircle, Sparkles, Users, Clock } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
 import { getProductBySlug, products } from "@/data/products";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
+import { productStories, whyAishwaryamPoints } from "@/data/productStoryData";
 
 // Product-specific reviews data
 const productReviews: Record<string, Array<{name: string; location: string; text: string; rating: number}>> = {
@@ -75,42 +76,6 @@ const productReviews: Record<string, Array<{name: string; location: string; text
   ],
 };
 
-// Problem-solution mapping for products
-const productProblems: Record<string, { problem: string; solution: string }> = {
-  "brightening-serum": {
-    problem: "Dull, tired-looking skin that lacks natural radiance",
-    solution: "Our gentle herbal extracts work to reveal your skin's natural glow over time, without harsh chemicals or quick fixes"
-  },
-  "herbal-shampoo": {
-    problem: "Harsh shampoos that strip hair of natural oils, leaving it dry and damaged",
-    solution: "Our mild herbal formula cleanses gently while preserving your hair's natural moisture and strength"
-  },
-  "herbal-face-pack": {
-    problem: "Clogged pores and dull skin from daily pollution and stress",
-    solution: "Weekly deep cleansing with traditional herbs removes impurities while nourishing your skin naturally"
-  },
-  "herbal-soap": {
-    problem: "Chemical soaps that dry out skin and cause irritation",
-    solution: "Gentle, natural cleansing that moisturizes while cleaning, safe for the whole family including children"
-  },
-  "hair-growth-serum": {
-    problem: "Hair thinning, weak roots, and excessive hair fall",
-    solution: "Potent herbal ingredients nourish hair follicles from the root, promoting stronger, healthier hair growth naturally"
-  },
-  "herbal-toner": {
-    problem: "Unbalanced skin pH and poor absorption of skincare products",
-    solution: "Natural toning that refreshes, balances, and prepares your skin for better absorption of serums and treatments"
-  },
-  "bath-powder": {
-    problem: "Missing the traditional, gentle bathing experience of natural ingredients",
-    solution: "Time-tested herbal formula that cleanses gently while leaving skin soft, smooth, and naturally fragrant"
-  },
-  "herbal-conditioner": {
-    problem: "Tangled, dry hair that's difficult to manage after washing",
-    solution: "Natural conditioning that softens, detangles, and adds shine without weighing hair down or leaving residue"
-  },
-};
-
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const product = getProductBySlug(slug || "");
@@ -145,7 +110,7 @@ const ProductDetail = () => {
     .slice(0, 4);
 
   const reviews = productReviews[product.slug] || productReviews["brightening-serum"];
-  const problemSolution = productProblems[product.slug] || productProblems["brightening-serum"];
+  const story = productStories[product.slug] || productStories["brightening-serum"];
 
   const handleAddToCart = () => {
     addToCart(product);
@@ -256,58 +221,40 @@ const ProductDetail = () => {
         </div>
       </section>
 
-      {/* Below the Fold Sections */}
+      {/* Storytelling Sections */}
       <section className="py-8 md:py-12 bg-cream/30">
         <div className="container">
           <div className="max-w-3xl mx-auto space-y-8">
             
-            {/* Why Customers Love This */}
+            {/* 1. What's Inside - Ingredient Story */}
             <div className="bg-background p-6 md:p-8 rounded-2xl shadow-soft">
-              <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
-                Why Customers Love This
-              </h3>
-              <ul className="space-y-3">
-                {product.benefits.map((benefit, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-foreground">{benefit}</span>
-                  </li>
-                ))}
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-foreground">Herbal, gentle, trusted by families</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-foreground">Safe for daily use</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* What Problem It Helps With */}
-            <div className="bg-background p-6 md:p-8 rounded-2xl shadow-soft">
-              <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
-                What Problem It Helps With
+              <h3 className="font-serif text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <span>🌿</span> What's Inside (Traditional Herbal Care)
               </h3>
               <div className="space-y-4">
-                <div className="p-4 bg-red-50 rounded-xl border-l-4 border-red-200">
-                  <p className="text-foreground font-medium text-sm mb-1">The Problem:</p>
-                  <p className="text-muted-foreground">{problemSolution.problem}</p>
-                </div>
-                <div className="p-4 bg-green-50 rounded-xl border-l-4 border-green-200">
-                  <p className="text-foreground font-medium text-sm mb-1">Our Solution:</p>
-                  <p className="text-muted-foreground">{problemSolution.solution}</p>
-                </div>
+                {story.ingredients.map((ingredient, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 bg-sage-light/30 rounded-xl">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                    <div>
+                      <span className="font-medium text-foreground">{ingredient.name}</span>
+                      <span className="text-muted-foreground"> — {ingredient.benefit}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* How to Use */}
+            {/* 2. How to Use */}
             <div className="bg-background p-6 md:p-8 rounded-2xl shadow-soft">
-              <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
-                How to Use
+              <h3 className="font-serif text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <span>🧴</span> How to Use
               </h3>
-              <ol className="space-y-3 mb-4">
-                {product.howToUse.map((step, i) => (
+              <div className="mb-4 inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full">
+                <Clock className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-primary">{story.usageTime}</span>
+              </div>
+              <ol className="space-y-3 mb-5">
+                {story.usageSteps.map((step, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <span className="w-6 h-6 bg-primary text-primary-foreground text-sm font-medium rounded-full flex items-center justify-center flex-shrink-0">
                       {i + 1}
@@ -316,27 +263,90 @@ const ProductDetail = () => {
                   </li>
                 ))}
               </ol>
-              <p className="text-sm text-muted-foreground italic">
-                Safe for daily use. Patch test recommended for sensitive skin.
-              </p>
+              <div className="p-4 bg-sage-light/50 rounded-xl space-y-2">
+                <div className="flex items-center gap-2 text-sm text-sage-dark">
+                  <Check className="w-4 h-4 text-primary" />
+                  <span>Suitable for regular use</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-sage-dark">
+                  <Check className="w-4 h-4 text-primary" />
+                  <span>Patch test recommended for sensitive skin</span>
+                </div>
+              </div>
             </div>
 
-            {/* Ingredients */}
+            {/* 3. What You'll Notice Over Time */}
             <div className="bg-background p-6 md:p-8 rounded-2xl shadow-soft">
-              <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
-                Ingredients
+              <h3 className="font-serif text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-accent" /> What You'll Notice Over Time
               </h3>
-              <div className="flex flex-wrap gap-2">
-                {product.ingredients.map((ingredient, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1.5 bg-sage-light text-sage-dark text-sm rounded-full"
-                  >
-                    {ingredient}
-                  </span>
+              <div className="space-y-4">
+                <div className="flex gap-4 items-start">
+                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-sm font-bold text-primary">1-2<br/>Weeks</span>
+                  </div>
+                  <div className="flex-1 pt-2">
+                    <p className="text-foreground">{story.resultsTimeline.week1_2}</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="w-16 h-16 bg-primary/15 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-sm font-bold text-primary">3-4<br/>Weeks</span>
+                  </div>
+                  <div className="flex-1 pt-2">
+                    <p className="text-foreground">{story.resultsTimeline.week3_4}</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-xs font-bold text-primary text-center">Regular<br/>Use</span>
+                  </div>
+                  <div className="flex-1 pt-2">
+                    <p className="text-foreground">{story.resultsTimeline.regular}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-5 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+                <p className="text-sm text-amber-800 italic">
+                  "Herbal products work gradually. Results may vary by individual."
+                </p>
+              </div>
+            </div>
+
+            {/* 4. Who Can Use This? */}
+            <div className="bg-background p-6 md:p-8 rounded-2xl shadow-soft">
+              <h3 className="font-serif text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <Users className="w-5 h-5 text-primary" /> Who Can Use This?
+              </h3>
+              <div className="space-y-3 mb-4">
+                {story.suitability.suitable.map((item, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <Check className="w-5 h-5 text-primary" />
+                    <span className="text-foreground">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex items-center gap-2 p-3 bg-red-50 rounded-xl">
+                <span className="text-red-500 font-bold">✕</span>
+                <span className="text-red-700 text-sm">{story.suitability.notFor}</span>
+              </div>
+            </div>
+
+            {/* 5. Why Aishwaryam Herbals? */}
+            <div className="bg-background p-6 md:p-8 rounded-2xl shadow-soft">
+              <h3 className="font-serif text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <span>🤍</span> Why Aishwaryam Herbals?
+              </h3>
+              <div className="space-y-3">
+                {whyAishwaryamPoints.map((point, i) => (
+                  <div key={i} className="flex items-center gap-3 p-3 bg-sage-light/30 rounded-xl">
+                    <span className="text-xl">{point.icon}</span>
+                    <span className="text-foreground">{point.text}</span>
+                  </div>
                 ))}
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -394,6 +404,38 @@ const ProductDetail = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Block */}
+      <section className="py-8 md:py-12 bg-primary/5">
+        <div className="container">
+          <div className="max-w-2xl mx-auto text-center">
+            <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground mb-3">
+              Ready to Try {product.name}?
+            </h3>
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="font-serif text-3xl md:text-4xl font-bold text-primary">
+                ₹{product.price}
+              </span>
+              <span className="text-muted-foreground">· {product.size}</span>
+            </div>
+            <p className="text-muted-foreground mb-6">
+              Honest herbal care for everyday use
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button onClick={handleAddToCart} variant="hero" size="lg">
+                <ShoppingCart className="w-5 h-5 mr-2" />
+                Add to Cart
+              </Button>
+              <Button asChild variant="whatsapp" size="lg">
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Order on WhatsApp
+                </a>
+              </Button>
             </div>
           </div>
         </div>
