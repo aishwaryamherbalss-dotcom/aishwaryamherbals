@@ -115,7 +115,7 @@ export const Footer = () => {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/919876543210"
+        href="https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I'm interested in your herbal products."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50"
