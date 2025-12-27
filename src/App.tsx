@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import Shop from "./pages/Shop";
 import CategorySkinCare from "./pages/CategorySkinCare";
 import CategoryHairCare from "./pages/CategoryHairCare";
+import CategoryFacePacks from "./pages/CategoryFacePacks";
 import BestSellersPage from "./pages/BestSellersPage";
 import CombosPage from "./pages/CombosPage";
 import ProductDetail from "./pages/ProductDetail";
@@ -36,8 +37,7 @@ const App = () => (
               <Route path="/shop" element={<Shop />} />
               <Route path="/shop/skin-care" element={<CategorySkinCare />} />
               <Route path="/shop/hair-care" element={<CategoryHairCare />} />
-              <Route path="/category/skin-care" element={<CategorySkinCare />} />
-              <Route path="/category/hair-care" element={<CategoryHairCare />} />
+              <Route path="/shop/face-packs" element={<CategoryFacePacks />} />
               <Route path="/best-sellers" element={<BestSellersPage />} />
               <Route path="/combos" element={<CombosPage />} />
               <Route path="/product/:slug" element={<ProductDetail />} />

@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { products } from "@/data/products";
-import { ShoppingBag, Sparkles, Leaf } from "lucide-react";
+import { ShoppingBag, Sparkles, Leaf, Flower } from "lucide-react";
 
 const Shop = () => {
   const skinCareProducts = products.filter((p) => p.category === "skin-care");
   const hairCareProducts = products.filter((p) => p.category === "hair-care");
+  const facePackProducts = products.filter((p) => p.category === "face-packs");
 
   return (
     <PageLayout
@@ -33,7 +34,7 @@ const Shop = () => {
       {/* Category Cards */}
       <section className="py-8 md:py-12">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+          <div className="grid md:grid-cols-3 gap-4 md:gap-6">
             <Link
               to="/shop/skin-care"
               className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-rose-gold-light to-cream p-6 md:p-8 shadow-soft hover:shadow-medium transition-all duration-300"
@@ -47,7 +48,7 @@ const Shop = () => {
                     Skin Care
                   </h3>
                   <p className="text-muted-foreground text-sm md:text-base">
-                    Gentle herbal care for glowing, healthy skin — made for everyday use.
+                    Gentle herbal care for glowing, healthy skin.
                   </p>
                   <p className="text-primary text-sm font-medium mt-2">
                     {skinCareProducts.length} Products →
@@ -69,10 +70,32 @@ const Shop = () => {
                     Hair Care
                   </h3>
                   <p className="text-muted-foreground text-sm md:text-base">
-                    Traditional herbal hair care for strong, healthy hair — safe for regular use.
+                    Traditional herbal hair care for healthy hair.
                   </p>
                   <p className="text-primary text-sm font-medium mt-2">
                     {hairCareProducts.length} Products →
+                  </p>
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              to="/shop/face-packs"
+              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-olive-muted/20 to-cream p-6 md:p-8 shadow-soft hover:shadow-medium transition-all duration-300"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-14 h-14 rounded-xl bg-background flex items-center justify-center shadow-soft group-hover:scale-110 transition-transform">
+                  <Flower className="w-7 h-7 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    Face Packs
+                  </h3>
+                  <p className="text-muted-foreground text-sm md:text-base">
+                    Deep cleansing herbal face packs for radiant skin.
+                  </p>
+                  <p className="text-primary text-sm font-medium mt-2">
+                    {facePackProducts.length} Products →
                   </p>
                 </div>
               </div>
