@@ -10,16 +10,53 @@ const slides = [
     id: 1,
     image: "/lovable-uploads/787c8994-539b-4c3d-b78f-35ed678308f5.png",
     alt: "Aishwaryam Herbals - Premium herbal beauty products",
+    headline: "Pure Herbal Care for",
+    headlineHighlight: "Everyday Beauty",
+    headlineSuffix: "& Wellness",
+    subtext: "Handmade. Honest Pricing.",
+    subtextSuffix: "Trusted by Tamil Nadu Families.",
+    trustLine: null,
+    ctaPrimary: { text: "Shop Best Sellers", link: "/best-sellers" },
+    ctaSecondary: { text: "Order on WhatsApp" },
   },
   {
     id: 2,
     image: "/lovable-uploads/32faae7c-cf49-4636-94e9-8368e4d4f4c2.png",
-    alt: "Aishwaryam Herbals - Natural skincare collection",
+    alt: "Aishwaryam Herbals - Natural skincare for families",
+    headline: "Gentle Herbal Care for the",
+    headlineHighlight: "Whole Family",
+    headlineSuffix: "",
+    subtext: "Safe for daily use.",
+    subtextSuffix: "Loved by women, trusted by families across Tamil Nadu.",
+    trustLine: "வீட்டில் எல்லோருக்கும் ஏற்றது • Safe for everyday family use",
+    ctaPrimary: { text: "Explore Skin & Hair Care", link: "/shop" },
+    ctaSecondary: { text: "Order on WhatsApp" },
   },
   {
     id: 3,
     image: "/lovable-uploads/33ec6388-e571-427a-b1a5-c8645fdc5d3a.png",
-    alt: "Aishwaryam Herbals - Herbal hair care products",
+    alt: "Aishwaryam Herbals - Honest pricing products",
+    headline: "Honest Pricing.",
+    headlineHighlight: "No Fake Offers.",
+    headlineSuffix: "",
+    subtext: "What you see is what you pay.",
+    subtextSuffix: "Everyday herbal care without inflated prices.",
+    trustLine: "Daily price itself is our best price",
+    ctaPrimary: { text: "View All Products", link: "/shop" },
+    ctaSecondary: { text: "Order on WhatsApp" },
+  },
+  {
+    id: 4,
+    image: "/lovable-uploads/a6f60886-1197-452f-b145-4244fcef2dba.png",
+    alt: "Aishwaryam Herbals - Natural glow products",
+    headline: "Glow Naturally, the",
+    headlineHighlight: "Herbal Way",
+    headlineSuffix: "",
+    subtext: "Light on skin. Strong on results.",
+    subtextSuffix: "Designed for regular use.",
+    trustLine: "Gentle care with visible glow over time",
+    ctaPrimary: { text: "View Best Sellers", link: "/best-sellers" },
+    ctaSecondary: { text: "Order on WhatsApp" },
   },
 ];
 
@@ -86,9 +123,9 @@ export const HeroSlider = () => {
                         </div>
 
                         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight">
-                          Pure Herbal Care for{" "}
+                          {slide.headline}{" "}
                           <span className="text-primary relative">
-                            Everyday Beauty
+                            {slide.headlineHighlight}
                             <svg
                               className="absolute -bottom-2 left-0 w-full h-3 text-accent/50"
                               viewBox="0 0 200 12"
@@ -101,23 +138,25 @@ export const HeroSlider = () => {
                                 strokeLinecap="round"
                               />
                             </svg>
-                          </span>{" "}
-                          & Wellness
+                          </span>
+                          {slide.headlineSuffix && ` ${slide.headlineSuffix}`}
                         </h1>
 
                         <p className="text-lg md:text-xl text-muted-foreground">
-                          <span className="font-medium text-foreground">Handmade. Honest Pricing.</span>{" "}
-                          Trusted by Tamil Nadu Families.
+                          <span className="font-medium text-foreground">{slide.subtext}</span>{" "}
+                          {slide.subtextSuffix}
                         </p>
 
-                        <p className="text-base text-olive-muted">
-                          No inflated prices. No fake offers. Just honest herbal care for daily use.
-                        </p>
+                        {slide.trustLine && (
+                          <p className="text-base text-olive-muted">
+                            {slide.trustLine}
+                          </p>
+                        )}
 
                         <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                           <Button asChild variant="hero" size="xl" className="group h-14 text-base md:text-lg touch-target">
-                            <Link to="/best-sellers">
-                              Shop Best Sellers
+                            <Link to={slide.ctaPrimary.link}>
+                              {slide.ctaPrimary.text}
                               <span className="group-hover:translate-x-1 transition-transform ml-2">→</span>
                             </Link>
                           </Button>
@@ -129,7 +168,7 @@ export const HeroSlider = () => {
                           >
                             <Button variant="hero-outline" size="xl" className="gap-2 h-14 text-base md:text-lg touch-target">
                               <MessageCircle className="w-5 h-5" />
-                              Order on WhatsApp
+                              {slide.ctaSecondary.text}
                             </Button>
                           </a>
                         </div>
