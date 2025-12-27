@@ -23,7 +23,7 @@ export const NewProductPopup = () => {
       <div className="bg-background rounded-3xl shadow-lg max-w-sm w-full overflow-hidden animate-scale-in">
         {/* Image */}
         <div className="relative aspect-[4/3] bg-sage-light">
-          <img alt="Herbal Hair Growth Serum - New Launch" className="w-full h-full object-contain" src="/lovable-uploads/33ec6388-e571-427a-b1a5-c8645fdc5d3a.png" />
+          <img alt="Herbal Hair Growth Serum - New Launch" src="/lovable-uploads/33ec6388-e571-427a-b1a5-c8645fdc5d3a.png" className="w-full h-full object-cover" />
           <button onClick={handleClose} className="absolute top-4 right-4 w-10 h-10 bg-background/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-background transition-colors touch-target" aria-label="Close popup">
             <X className="w-5 h-5" />
           </button>
