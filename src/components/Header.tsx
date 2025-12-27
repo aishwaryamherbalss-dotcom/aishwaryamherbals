@@ -3,13 +3,13 @@ import { Menu, X, ShoppingBag, Globe } from "lucide-react";
 import { Button } from "./ui/button";
 
 const navLinks = [
-  { name: "Home", href: "#" },
-  { name: "Shop", href: "#shop" },
-  { name: "Best Sellers", href: "#bestsellers" },
-  { name: "Combos", href: "#combos" },
-  { name: "About Us", href: "#about" },
-  { name: "Reviews", href: "#reviews" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "https://aishwaryamherbals.lovable.app", external: false },
+  { name: "Shop", href: "https://aishwaryamherbals.com/shop", external: true },
+  { name: "Best Sellers", href: "https://aishwaryamherbals.com/product-tag/best-seller", external: true },
+  { name: "Combos", href: "https://aishwaryamherbals.com/product-category/combos", external: true },
+  { name: "About Us", href: "#about", external: false },
+  { name: "Reviews", href: "#reviews", external: false },
+  { name: "Contact", href: "#contact", external: false },
 ];
 
 export const Header = () => {
@@ -41,6 +41,8 @@ export const Header = () => {
               <a
                 key={link.name}
                 href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
               >
                 {link.name}
@@ -87,6 +89,8 @@ export const Header = () => {
                 <a
                   key={link.name}
                   href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
                   className="block px-4 py-3 text-base font-medium text-foreground hover:bg-secondary rounded-lg transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
