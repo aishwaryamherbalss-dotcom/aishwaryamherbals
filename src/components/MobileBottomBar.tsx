@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 export const MobileBottomBar = () => {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I'm interested in your herbal products.", "_blank");
+    window.open("https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I want to know more about your products / place an order.", "_blank");
   };
 
   return (
@@ -28,11 +28,14 @@ export const MobileBottomBar = () => {
         <Button 
           variant="whatsapp" 
           size="lg" 
-          className="flex-1 h-14 text-base font-semibold gap-2"
+          className="flex-1 h-14 text-base font-semibold gap-2 flex-col py-2"
           onClick={handleWhatsApp}
         >
-          <MessageCircle className="w-5 h-5" />
-          Talk to Us on WhatsApp
+          <span className="flex items-center gap-2">
+            <MessageCircle className="w-5 h-5" />
+            Order / Ask on WhatsApp
+          </span>
+          <span className="text-xs font-normal opacity-90">ஆர்டர் செய்ய / கேள்விகள் கேட்க</span>
         </Button>
       </div>
     </div>
