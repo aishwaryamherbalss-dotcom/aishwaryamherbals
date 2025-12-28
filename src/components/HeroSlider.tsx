@@ -134,14 +134,14 @@ export const HeroSlider = () => {
                         </Link>
                       </Button>
                       <a
-                        href="https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I'm interested in your herbal products."
+                        href="https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I want to know more about your products / place an order."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hidden md:flex"
                       >
                         <Button variant="hero-outline" size="xl" className="gap-2 h-14 text-base md:text-lg touch-target">
                           <MessageCircle className="w-5 h-5" />
-                          {slide.ctaSecondary.text}
+                          Order / Ask on WhatsApp
                         </Button>
                       </a>
                     </div>

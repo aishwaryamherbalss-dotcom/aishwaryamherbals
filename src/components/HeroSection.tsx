@@ -41,10 +41,10 @@ export const HeroSection = () => {
                 Shop Best Sellers
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Button>
-              <a href="https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I'm interested in your herbal products." target="_blank" rel="noopener noreferrer" className="hidden md:flex">
+              <a href="https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I want to know more about your products / place an order." target="_blank" rel="noopener noreferrer" className="hidden md:flex">
                 <Button variant="hero-outline" size="xl" className="gap-2 h-14 text-base md:text-lg touch-target">
                   <MessageCircle className="w-5 h-5" />
-                  Order Comfortably on WhatsApp
+                  Order / Ask on WhatsApp
                 </Button>
               </a>
             </div>

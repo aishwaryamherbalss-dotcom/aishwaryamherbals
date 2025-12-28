@@ -2,25 +2,22 @@ import { MessageCircle } from "lucide-react";
 
 export const FloatingWhatsApp = () => {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I'm interested in your herbal products.", "_blank");
+    window.open("https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I want to know more about your products / place an order.", "_blank");
   };
 
   return (
-    <div className="fixed bottom-24 right-4 md:bottom-8 md:right-8 z-40 flex flex-col items-end gap-2 animate-scale-in">
-      {/* Tooltip on desktop */}
-      <div className="hidden md:block bg-background rounded-lg px-3 py-2 shadow-soft text-sm text-foreground max-w-[200px] text-right">
-        <p className="font-medium">Have doubts? We're happy to help.</p>
-      </div>
+    <div className="fixed bottom-24 right-4 md:bottom-8 md:right-8 z-40 flex flex-col items-end gap-1 animate-scale-in">
       <button
         onClick={handleWhatsApp}
-        className="w-14 h-14 md:w-16 md:h-16 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-full shadow-medium hover:shadow-lg transition-all duration-300 flex items-center justify-center group"
-        aria-label="Order via WhatsApp - We're happy to help you choose"
+        className="bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-full shadow-medium hover:shadow-lg transition-all duration-300 flex items-center gap-2 px-4 py-3 md:px-5 md:py-3.5 group"
+        aria-label="Order or Ask on WhatsApp"
       >
-        <MessageCircle className="w-7 h-7 md:w-8 md:h-8 group-hover:scale-110 transition-transform" />
-        <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent rounded-full flex items-center justify-center text-xs font-bold text-accent-foreground animate-pulse">
-          ?
-        </span>
+        <MessageCircle className="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform" />
+        <span className="font-semibold text-sm md:text-base">Order / Ask on WhatsApp</span>
       </button>
+      <span className="text-xs text-muted-foreground text-right pr-1">
+        ஆர்டர் செய்ய / கேள்விகள் கேட்க WhatsApp
+      </span>
     </div>
   );
 };

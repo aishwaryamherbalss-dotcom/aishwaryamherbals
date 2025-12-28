@@ -113,18 +113,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Floating WhatsApp Button */}
-      <a
-        href="https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I'm interested in your herbal products."
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50"
-      >
-        <Button variant="whatsapp" size="lg" className="rounded-full shadow-lg hover:shadow-xl gap-2">
-          <MessageCircle className="w-5 h-5" />
-          <span className="hidden sm:inline">Order on WhatsApp</span>
-        </Button>
-      </a>
+      {/* Floating WhatsApp Button - Hidden since FloatingWhatsApp component handles this */}
     </footer>
   );
 };

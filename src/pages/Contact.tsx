@@ -139,7 +139,7 @@ const Contact = () => {
                 </h2>
                 <div className="space-y-4">
                   <a
-                    href="https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I'm interested in your herbal products."
+                    href="https://wa.me/919843398171?text=Hi Aishwaryam Herbals, I want to know more about your products / place an order."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 p-3 bg-sage-light/50 rounded-xl hover:bg-sage-light transition-colors"

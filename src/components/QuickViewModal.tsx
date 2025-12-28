@@ -39,9 +39,9 @@ export const QuickViewModal = ({
 
   const handleWhatsAppOrder = () => {
     const message = encodeURIComponent(
-      `Hi, I would like to order: ${item.name} - ₹${item.price}`
+      `Hi Aishwaryam Herbals, I want to know more about ${item.name} (₹${item.price}) / place an order.`
     );
-    window.open(`https://wa.me/919876543210?text=${message}`, "_blank");
+    window.open(`https://wa.me/919843398171?text=${message}`, "_blank");
   };
 
   return (
@@ -121,7 +121,7 @@ export const QuickViewModal = ({
               onClick={handleWhatsAppOrder}
             >
               <MessageCircle className="w-4 h-4" />
-              Order on WhatsApp
+              Order / Ask on WhatsApp
             </Button>
           </div>
         </div>
