@@ -168,9 +168,9 @@ export const HeroSlider = () => {
                         className="w-full h-full object-cover object-center"
                         onError={handleImageError}
                       />
-                      {/* Floating Badge - Products from ₹60 with Framer Motion - Static on mobile, animated on desktop */}
+                      {/* Floating Badge - Products from ₹60 with Framer Motion - Positioned top-right to avoid product overlap */}
                       <motion.div
-                        className="absolute bottom-3 left-3 md:bottom-6 md:left-6 bg-background/95 backdrop-blur-sm rounded-lg md:rounded-2xl p-2.5 md:p-4 shadow-soft"
+                        className="absolute top-3 right-3 md:top-6 md:right-6 bg-background/95 backdrop-blur-sm rounded-lg md:rounded-2xl p-2.5 md:p-4 shadow-soft"
                         animate={badgeAnimation}
                         transition={badgeTransition}
                       >
