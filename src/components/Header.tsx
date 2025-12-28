@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ShoppingBag, Globe, ChevronDown } from "lucide-react";
+import { Menu, X, ShoppingBag, Globe, ChevronDown, User } from "lucide-react";
 import { Button } from "./ui/button";
 import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 const shopDropdownItems = [
   { name: "All Products", href: "/shop" },
@@ -26,6 +27,7 @@ export const Header = () => {
   const [isMobileShopOpen, setIsMobileShopOpen] = useState(false);
   const [language, setLanguage] = useState<"EN" | "தமிழ்">("EN");
   const { getItemCount } = useCart();
+  const { user, signOut } = useAuth();
   const itemCount = getItemCount();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
@@ -128,6 +130,25 @@ export const Header = () => {
 
           {/* Right Side Actions */}
           <div className="flex items-center gap-3">
+            {/* Login/Register Link - Desktop */}
+            {user ? (
+              <button
+                onClick={() => signOut()}
+                className="hidden lg:flex items-center gap-1.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              >
+                <User className="w-4 h-4" />
+                <span>Logout</span>
+              </button>
+            ) : (
+              <Link
+                to="/auth"
+                state={{ from: location.pathname }}
+                className="hidden lg:flex items-center gap-1.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              >
+                <span>Login / Register</span>
+              </Link>
+            )}
+
             {/* Language Toggle */}
             <button
               onClick={() => setLanguage(language === "EN" ? "தமிழ்" : "EN")}
@@ -219,6 +240,30 @@ export const Header = () => {
                   {link.name}
                 </Link>
               ))}
+
+              {/* Mobile Login/Register */}
+              {user ? (
+                <button
+                  onClick={() => {
+                    signOut();
+                    setIsMenuOpen(false);
+                  }}
+                  className="flex items-center gap-2 px-4 py-3 text-base font-medium text-foreground hover:bg-secondary rounded-lg transition-colors w-full"
+                >
+                  <User className="w-5 h-5" />
+                  <span>Logout</span>
+                </button>
+              ) : (
+                <Link
+                  to="/auth"
+                  state={{ from: location.pathname }}
+                  className="flex items-center gap-2 px-4 py-3 text-base font-medium text-foreground hover:bg-secondary rounded-lg transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <User className="w-5 h-5" />
+                  <span>Login / Register</span>
+                </Link>
+              )}
 
               <button
                 onClick={() => setLanguage(language === "EN" ? "தமிழ்" : "EN")}
