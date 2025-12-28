@@ -24,9 +24,8 @@ export interface HeroSlide {
   headlineTamil?: string;
   subtext: string;
   subtextSuffix: string;
-  subtextTamil?: string;
   trustLine: string | null;
-  ctaPrimary: { text: string; textTamil?: string; link: string };
+  ctaPrimary: { text: string; link: string };
   ctaSecondary: { text: string };
 }
 
@@ -40,11 +39,10 @@ export const heroSlides: HeroSlide[] = [
     headlineHighlight: "Everyday Beauty",
     headlineSuffix: "& Wellness",
     headlineTamil: "தினசரி அழகு மற்றும் ஆரோக்கியத்திற்கு தூய மூலிகை பராமரிப்பு",
-    subtext: "Handmade products with honest pricing, trusted by families.",
-    subtextSuffix: "",
-    subtextTamil: "கைவினை முறையில் தயாரிக்கப்பட்ட, நேர்மையான விலையில் குடும்பங்கள் நம்பும் தயாரிப்புகள்.",
+    subtext: "Handmade. Honest Pricing.",
+    subtextSuffix: "Trusted by Tamil Nadu Families.",
     trustLine: null,
-    ctaPrimary: { text: "Shop Now", textTamil: "இப்போது வாங்குங்கள்", link: "/shop" },
+    ctaPrimary: { text: "Shop Best Sellers", link: "/best-sellers" },
     ctaSecondary: { text: "Order on WhatsApp" },
   },
   {

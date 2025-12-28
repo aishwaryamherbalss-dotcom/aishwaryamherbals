@@ -120,16 +120,10 @@ export const HeroSlider = () => {
                     )}
 
                     {/* Subtext */}
-                    <div className="space-y-1 animate-fade-in-up animation-delay-200">
-                      <p className="text-lg md:text-xl text-foreground max-w-xl mx-auto lg:mx-0">
-                        {slide.subtext}
-                      </p>
-                      {slide.subtextTamil && (
-                        <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0">
-                          {slide.subtextTamil}
-                        </p>
-                      )}
-                    </div>
+                    <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-200">
+                      <span className="font-medium text-foreground">{slide.subtext}</span>{" "}
+                      {slide.subtextSuffix}
+                    </p>
 
                     {/* Optional Trust Line */}
                     {slide.trustLine && (
@@ -140,15 +134,10 @@ export const HeroSlider = () => {
 
                     {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start animate-fade-in-up animation-delay-600">
-                      <Button asChild variant="hero" size="xl" className="group h-14 text-base md:text-lg touch-target flex-col py-2">
+                      <Button asChild variant="hero" size="xl" className="group h-14 text-base md:text-lg touch-target">
                         <Link to={slide.ctaPrimary.link}>
-                          <span className="flex items-center gap-2">
-                            {slide.ctaPrimary.text}
-                            <span className="group-hover:translate-x-1 transition-transform">→</span>
-                          </span>
-                          {slide.ctaPrimary.textTamil && (
-                            <span className="text-xs opacity-80">{slide.ctaPrimary.textTamil}</span>
-                          )}
+                          {slide.ctaPrimary.text}
+                          <span className="group-hover:translate-x-1 transition-transform ml-2">→</span>
                         </Link>
                       </Button>
                       <a
