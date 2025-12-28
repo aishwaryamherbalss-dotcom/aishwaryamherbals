@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "./ui/button";
-import { MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { MessageCircle, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -47,12 +47,21 @@ export const HeroSlider = () => {
     e.currentTarget.src = HERO_FALLBACK_IMAGE;
   };
 
-  // Subtle fade-in animation for badge
+  // Subtle fade-in animation for pricing badge (no pulse/blink)
   const badgeInitial = { opacity: 0, y: -10 };
   const badgeAnimate = { opacity: 1, y: 0 };
   const badgeTransition = {
     duration: 0.5,
     ease: "easeOut" as const,
+  };
+
+  // Gentle float animation for trust micro-badge
+  const trustBadgeInitial = { opacity: 0, y: 8 };
+  const trustBadgeAnimate = { opacity: 1, y: 0 };
+  const trustBadgeTransition = {
+    duration: 0.6,
+    ease: "easeOut" as const,
+    delay: 0.3,
   };
 
   return (
@@ -148,6 +157,21 @@ export const HeroSlider = () => {
                         </Button>
                       </a>
                     </div>
+
+                    {/* Honest Everyday Pricing Trust Micro-Badge - Near CTA */}
+                    <motion.div
+                      className="flex justify-center lg:justify-start animate-fade-in-up"
+                      initial={trustBadgeInitial}
+                      animate={trustBadgeAnimate}
+                      transition={trustBadgeTransition}
+                    >
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/20 border border-accent/30 rounded-full">
+                        <span className="text-sm">💚</span>
+                        <span className="text-xs md:text-sm font-medium text-foreground">
+                          Honest Everyday Pricing
+                        </span>
+                      </div>
+                    </motion.div>
                   </div>
 
                   {/* Right Image */}
@@ -159,6 +183,7 @@ export const HeroSlider = () => {
                         className="w-full h-full object-cover object-center"
                         onError={handleImageError}
                       />
+                      
                       {/* Floating Badge - Products from ₹60 - Top Right Corner */}
                       <motion.div
                         className="absolute top-3 right-3 md:top-5 md:right-5 bg-background/95 backdrop-blur-sm rounded-lg md:rounded-xl p-2 md:p-3 shadow-soft"
@@ -176,6 +201,33 @@ export const HeroSlider = () => {
                           </div>
                         </div>
                       </motion.div>
+
+                      {/* Testimonial Overlay for Slide 4 */}
+                      {slide.slideType === "testimonial" && slide.testimonial && (
+                        <motion.div
+                          className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-4 md:p-6"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: 0.4 }}
+                        >
+                          {/* Star Rating */}
+                          <div className="flex items-center gap-0.5 mb-2">
+                            {[...Array(slide.testimonial.rating)].map((_, i) => (
+                              <Star key={i} className="w-3 h-3 md:w-4 md:h-4 fill-yellow-400 text-yellow-400" />
+                            ))}
+                          </div>
+                          
+                          {/* Quote */}
+                          <p className="text-white text-sm md:text-base font-medium mb-2 line-clamp-2">
+                            "{slide.testimonial.quote}"
+                          </p>
+                          
+                          {/* Customer Info */}
+                          <p className="text-white/80 text-xs md:text-sm">
+                            — {slide.testimonial.customerName}, {slide.testimonial.location}
+                          </p>
+                        </motion.div>
+                      )}
                     </div>
                   </div>
                 </div>
