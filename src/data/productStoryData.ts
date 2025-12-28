@@ -231,3 +231,9 @@ export const whyAishwaryamPoints = [
   { icon: "🚫", text: "No false promises or guaranteed claims" },
   { icon: "✨", text: "Designed for regular, everyday use by the whole family" }
 ];
+
+// Brand Trust Section
+export const brandTrustContent = {
+  heading: "Trusted Since 2016",
+  paragraph: "Aishwaryam Herbals has been crafting pure herbal care products for over 8 years. Started as a family venture in Tamil Nadu, we have grown through word-of-mouth recommendations from satisfied families. Our products are handmade in small batches using traditional recipes passed down through generations. We believe in honest pricing, genuine ingredients, and building lasting trust with every family we serve."
+};
