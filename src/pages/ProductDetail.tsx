@@ -1,78 +1,70 @@
 import { useParams, Link } from "react-router-dom";
-import { Star, Check, ChevronLeft, MessageCircle, ShoppingCart, Quote, CheckCircle, Sparkles, Users, Clock } from "lucide-react";
+import { Star, Check, ChevronLeft, MessageCircle, ShoppingCart, Quote, CheckCircle, Sparkles, Users, Clock, Heart } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
 import { getProductBySlug, products } from "@/data/products";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
-import { productStories, whyAishwaryamPoints } from "@/data/productStoryData";
+import { productStories, whyAishwaryamPoints, brandTrustContent } from "@/data/productStoryData";
 
-// Product-specific reviews data
+// Product-specific reviews data - unique reviewers per product
 const productReviews: Record<string, Array<{name: string; location: string; text: string; rating: number}>> = {
   "brightening-serum": [
-    { name: "Saranya", location: "Chennai", text: "Very gentle. Using daily without any irritation.", rating: 5 },
-    { name: "Lakshmi", location: "Trichy", text: "Using for 2 weeks. Skin feels softer.", rating: 5 },
+    { name: "Saranya M.", location: "Chennai", text: "Very gentle. Using daily without any irritation.", rating: 5 },
+    { name: "Lakshmi R.", location: "Trichy", text: "Using for 2 weeks. Skin feels softer.", rating: 5 },
     { name: "கலைவாணி", location: "மதுரை", text: "மிக மென்மையாக இருக்கு. தினசரி பயன்படுத்தலாம்.", rating: 5 },
-    { name: "Neha", location: "Bengaluru", text: "Very mild. Works well with regular use.", rating: 5 },
-    { name: "Sharmila", location: "Vellore", text: "I ordered again. Comfortable on skin.", rating: 5 },
+    { name: "Neha P.", location: "Bengaluru", text: "Very mild. Works well with regular use.", rating: 5 },
     { name: "சுமதி", location: "கோயம்புத்தூர்", text: "சருமம் நல்லா feel ஆகுது.", rating: 5 },
   ],
   "herbal-shampoo": [
-    { name: "Revathi", location: "Coimbatore", text: "Texture is light. Skin feels healthy.", rating: 5 },
-    { name: "Priya", location: "Erode", text: "Nice herbal feel. No harsh effect.", rating: 5 },
+    { name: "Revathi K.", location: "Coimbatore", text: "Texture is light. Hair feels healthy.", rating: 5 },
+    { name: "Priya S.", location: "Erode", text: "Nice herbal feel. No harsh effect.", rating: 5 },
     { name: "மாலதி", location: "தஞ்சாவூர்", text: "வீட்டில் எல்லாரும் பயன்படுத்துறோம்.", rating: 5 },
-    { name: "Swathi", location: "Vizag", text: "Clean formulation. Happy with it.", rating: 5 },
-    { name: "Deepa", location: "Tiruppur", text: "Repeat order panninen.", rating: 5 },
+    { name: "Deepa T.", location: "Tiruppur", text: "Repeat order panninen.", rating: 5 },
     { name: "ரேவதி", location: "சேலம்", text: "Chemical feel இல்ல. பிடிச்சிருக்கு.", rating: 5 },
   ],
   "herbal-face-pack": [
-    { name: "Kavitha", location: "Madurai", text: "Good for regular use. Not sticky.", rating: 5 },
-    { name: "Anitha", location: "Tirunelveli", text: "Daily use ku romba nalla iruku.", rating: 5 },
+    { name: "Kavitha N.", location: "Madurai", text: "Good for regular use. Not sticky.", rating: 5 },
+    { name: "Anitha R.", location: "Tirunelveli", text: "Daily use ku romba nalla iruku.", rating: 5 },
     { name: "பிரியா", location: "ஈரோடு", text: "மணம் அதிகம் இல்ல. நல்லா இருக்கு.", rating: 5 },
-    { name: "Anjali", location: "Hyderabad", text: "Simple and effective.", rating: 5 },
-    { name: "Rajeswari", location: "Dindigul", text: "Simple product. Trustworthy.", rating: 5 },
-    { name: "Nirmala", location: "Kumbakonam", text: "Family ellarum use panrom.", rating: 5 },
+    { name: "Rajeswari M.", location: "Dindigul", text: "Simple product. Trustworthy.", rating: 5 },
+    { name: "Nirmala K.", location: "Kumbakonam", text: "Family ellarum use panrom.", rating: 5 },
   ],
   "herbal-soap": [
-    { name: "Meena", location: "Salem", text: "I like the natural smell. Simple and clean.", rating: 5 },
-    { name: "Geetha", location: "Thanjavur", text: "Calm product. Suitable for family use.", rating: 5 },
-    { name: "Uma", location: "Namakkal", text: "Simple ingredients. No strong fragrance.", rating: 5 },
-    { name: "Pooja", location: "Pune", text: "Feels natural. No irritation.", rating: 5 },
-    { name: "Bhavani", location: "Hosur", text: "No fake promises. Honest product.", rating: 5 },
-    { name: "கலைவாணி", location: "மதுரை", text: "மிக மென்மையாக இருக்கு. தினசரி பயன்படுத்தலாம்.", rating: 5 },
+    { name: "Meena S.", location: "Salem", text: "I like the natural smell. Simple and clean.", rating: 5 },
+    { name: "Geetha L.", location: "Thanjavur", text: "Calm product. Suitable for family use.", rating: 5 },
+    { name: "Uma R.", location: "Namakkal", text: "Simple ingredients. No strong fragrance.", rating: 5 },
+    { name: "Pooja V.", location: "Pune", text: "Feels natural. No irritation.", rating: 5 },
+    { name: "பவானி", location: "ஓசூர்", text: "நல்ல சோப். குடும்பத்துக்கு safe.", rating: 5 },
   ],
   "hair-growth-serum": [
-    { name: "Saranya", location: "Chennai", text: "Very gentle. Using daily without any irritation.", rating: 5 },
-    { name: "Lakshmi", location: "Trichy", text: "Using for 2 weeks. Skin feels softer.", rating: 5 },
-    { name: "Ritu", location: "Mumbai", text: "Comfortable for daily routine.", rating: 5 },
-    { name: "Sathya", location: "Karur", text: "Combo is useful. Value for money.", rating: 5 },
-    { name: "சுமதி", location: "கோயம்புத்தூர்", text: "சருமம் நல்லா feel ஆகுது.", rating: 5 },
-    { name: "Sharmila", location: "Vellore", text: "I ordered again. Comfortable on skin.", rating: 5 },
+    { name: "Sharmila D.", location: "Vellore", text: "I ordered again. Comfortable on scalp.", rating: 5 },
+    { name: "Ritu M.", location: "Mumbai", text: "Comfortable for daily routine.", rating: 5 },
+    { name: "Sathya K.", location: "Karur", text: "Value for money. Hair feels stronger.", rating: 5 },
+    { name: "வசந்தி", location: "திருச்சி", text: "முடி உதிர்வு குறைஞ்சது.", rating: 5 },
+    { name: "Archana P.", location: "Coimbatore", text: "Using for 1 month. Happy with results.", rating: 5 },
   ],
   "herbal-toner": [
-    { name: "Revathi", location: "Coimbatore", text: "Texture is light. Skin feels healthy.", rating: 5 },
-    { name: "Priya", location: "Erode", text: "Nice herbal feel. No harsh effect.", rating: 5 },
-    { name: "Neha", location: "Bengaluru", text: "Very mild. Works well with regular use.", rating: 5 },
-    { name: "மாலதி", location: "தஞ்சாவூர்", text: "வீட்டில் எல்லாரும் பயன்படுத்துறோம்.", rating: 5 },
-    { name: "Anjali", location: "Hyderabad", text: "Simple and effective.", rating: 5 },
-    { name: "ரேவதி", location: "சேலம்", text: "Chemical feel இல்ல. பிடிச்சிருக்கு.", rating: 5 },
+    { name: "Anjali S.", location: "Hyderabad", text: "Simple and effective. Skin feels fresh.", rating: 5 },
+    { name: "Swathi R.", location: "Vizag", text: "Clean formulation. Happy with it.", rating: 5 },
+    { name: "மீனா", location: "சேலம்", text: "லேசான texture. நல்லா absorb ஆகுது.", rating: 5 },
+    { name: "Divya K.", location: "Chennai", text: "Perfect after cleansing. Refreshing.", rating: 5 },
+    { name: "Preeti N.", location: "Bangalore", text: "No alcohol feel. Very gentle.", rating: 5 },
   ],
   "bath-powder": [
-    { name: "Kavitha", location: "Madurai", text: "Good for regular use. Not sticky.", rating: 5 },
-    { name: "Meena", location: "Salem", text: "I like the natural smell. Simple and clean.", rating: 5 },
-    { name: "Geetha", location: "Thanjavur", text: "Calm product. Suitable for family use.", rating: 5 },
-    { name: "பிரியா", location: "ஈரோடு", text: "மணம் அதிகம் இல்ல. நல்லா இருக்கு.", rating: 5 },
-    { name: "Swathi", location: "Vizag", text: "Clean formulation. Happy with it.", rating: 5 },
-    { name: "Nirmala", location: "Kumbakonam", text: "Family ellarum use panrom.", rating: 5 },
+    { name: "Bhavani R.", location: "Hosur", text: "No fake promises. Honest product.", rating: 5 },
+    { name: "லக்ஷ்மி", location: "திருப்பூர்", text: "பாரம்பரிய குளியல் பொடி. மிக நல்லது.", rating: 5 },
+    { name: "Kamala S.", location: "Madurai", text: "Traditional feel. Skin is smooth.", rating: 5 },
+    { name: "Padma V.", location: "Erode", text: "Using instead of soap. Wonderful.", rating: 5 },
+    { name: "Jaya M.", location: "Trichy", text: "Good for whole family. Natural fragrance.", rating: 5 },
   ],
   "herbal-conditioner": [
-    { name: "Anitha", location: "Tirunelveli", text: "Daily use ku romba nalla iruku.", rating: 5 },
-    { name: "Uma", location: "Namakkal", text: "Simple ingredients. No strong fragrance.", rating: 5 },
-    { name: "Pooja", location: "Pune", text: "Feels natural. No irritation.", rating: 5 },
-    { name: "Deepa", location: "Tiruppur", text: "Repeat order panninen.", rating: 5 },
-    { name: "Rajeswari", location: "Dindigul", text: "Simple product. Trustworthy.", rating: 5 },
-    { name: "Bhavani", location: "Hosur", text: "No fake promises. Honest product.", rating: 5 },
+    { name: "Rani K.", location: "Salem", text: "Hair is easy to comb now.", rating: 5 },
+    { name: "அனிதா", location: "நாமக்கல்", text: "முடி சில்க் மாதிரி இருக்கு.", rating: 5 },
+    { name: "Vimala T.", location: "Thanjavur", text: "No frizz after using. Soft hair.", rating: 5 },
+    { name: "Suganya R.", location: "Dindigul", text: "Works great with herbal shampoo.", rating: 5 },
+    { name: "Jayanthi S.", location: "Coimbatore", text: "Detangling is easy. Love it.", rating: 5 },
   ],
 };
 
@@ -138,7 +130,7 @@ const ProductDetail = () => {
         </div>
       </div>
 
-      {/* Product Hero - Above the Fold */}
+      {/* Section 1: Product Introduction */}
       <section className="py-8 md:py-12">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
@@ -160,6 +152,7 @@ const ProductDetail = () => {
 
             {/* Product Info */}
             <div className="flex flex-col">
+              {/* Product Name */}
               <h1 className="font-serif text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mb-3">
                 {product.name}
               </h1>
@@ -183,9 +176,14 @@ const ProductDetail = () => {
                 </span>
               </div>
 
-              {/* One-line Benefit */}
-              <p className="text-muted-foreground mb-4">
+              {/* One-line gentle benefit statement */}
+              <p className="text-lg text-foreground font-medium mb-3">
                 {product.benefit}
+              </p>
+
+              {/* Short paragraph explaining who the product is for */}
+              <p className="text-muted-foreground mb-6">
+                {product.whoIsItFor}
               </p>
 
               {/* Price & Size */}
@@ -205,7 +203,7 @@ const ProductDetail = () => {
                 <Button asChild variant="whatsapp" size="lg" className="flex-1">
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5 mr-2" />
-                    Order on WhatsApp
+                    Order / Ask on WhatsApp
                   </a>
                 </Button>
               </div>
@@ -226,7 +224,7 @@ const ProductDetail = () => {
         <div className="container">
           <div className="max-w-3xl mx-auto space-y-8">
             
-            {/* 1. What's Inside - Ingredient Story */}
+            {/* Section 2: What's Inside (Traditional Herbal Care) */}
             <div className="bg-background p-6 md:p-8 rounded-2xl shadow-soft">
               <h3 className="font-serif text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                 <span>🌿</span> What's Inside (Traditional Herbal Care)
@@ -244,7 +242,7 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            {/* 2. How to Use */}
+            {/* Section 3: How to Use */}
             <div className="bg-background p-6 md:p-8 rounded-2xl shadow-soft">
               <h3 className="font-serif text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                 <span>🧴</span> How to Use
@@ -266,16 +264,16 @@ const ProductDetail = () => {
               <div className="p-4 bg-sage-light/50 rounded-xl space-y-2">
                 <div className="flex items-center gap-2 text-sm text-sage-dark">
                   <Check className="w-4 h-4 text-primary" />
-                  <span>Suitable for regular use</span>
+                  <span>Suitable for daily use</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-sage-dark">
                   <Check className="w-4 h-4 text-primary" />
-                  <span>Patch test recommended for sensitive skin</span>
+                  <span>Patch test recommended</span>
                 </div>
               </div>
             </div>
 
-            {/* 3. What You'll Notice Over Time */}
+            {/* Section 4: What You'll Notice Over Time */}
             <div className="bg-background p-6 md:p-8 rounded-2xl shadow-soft">
               <h3 className="font-serif text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-accent" /> What You'll Notice Over Time
@@ -283,7 +281,7 @@ const ProductDetail = () => {
               <div className="space-y-4">
                 <div className="flex gap-4 items-start">
                   <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm font-bold text-primary">1-2<br/>Weeks</span>
+                    <span className="text-sm font-bold text-primary text-center">Initial<br/>Use</span>
                   </div>
                   <div className="flex-1 pt-2">
                     <p className="text-foreground">{story.resultsTimeline.week1_2}</p>
@@ -291,7 +289,7 @@ const ProductDetail = () => {
                 </div>
                 <div className="flex gap-4 items-start">
                   <div className="w-16 h-16 bg-primary/15 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm font-bold text-primary">3-4<br/>Weeks</span>
+                    <span className="text-sm font-bold text-primary text-center">Regular<br/>Use</span>
                   </div>
                   <div className="flex-1 pt-2">
                     <p className="text-foreground">{story.resultsTimeline.week3_4}</p>
@@ -299,7 +297,7 @@ const ProductDetail = () => {
                 </div>
                 <div className="flex gap-4 items-start">
                   <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-xs font-bold text-primary text-center">Regular<br/>Use</span>
+                    <span className="text-xs font-bold text-primary text-center">Long<br/>Term</span>
                   </div>
                   <div className="flex-1 pt-2">
                     <p className="text-foreground">{story.resultsTimeline.regular}</p>
@@ -308,12 +306,12 @@ const ProductDetail = () => {
               </div>
               <div className="mt-5 p-4 bg-amber-50 border border-amber-200 rounded-xl">
                 <p className="text-sm text-amber-800 italic">
-                  "Herbal products work gradually. Results may vary by individual."
+                  "Herbal products work gradually. Results may vary for each individual."
                 </p>
               </div>
             </div>
 
-            {/* 4. Who Can Use This? */}
+            {/* Section 5: Who Can Use This? */}
             <div className="bg-background p-6 md:p-8 rounded-2xl shadow-soft">
               <h3 className="font-serif text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                 <Users className="w-5 h-5 text-primary" /> Who Can Use This?
@@ -326,17 +324,20 @@ const ProductDetail = () => {
                   </div>
                 ))}
               </div>
-              <div className="flex items-center gap-2 p-3 bg-red-50 rounded-xl">
-                <span className="text-red-500 font-bold">✕</span>
-                <span className="text-red-700 text-sm">{story.suitability.notFor}</span>
+              <div className="flex items-center gap-2 p-3 bg-amber-50 rounded-xl">
+                <span className="text-amber-600 font-bold">ℹ</span>
+                <span className="text-amber-700 text-sm">{story.suitability.notFor}</span>
               </div>
             </div>
 
-            {/* 5. Why Aishwaryam Herbals? */}
+            {/* Section 6: Brand Trust Section - Trusted Since 2016 */}
             <div className="bg-background p-6 md:p-8 rounded-2xl shadow-soft">
               <h3 className="font-serif text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                <span>🤍</span> Why Aishwaryam Herbals?
+                <Heart className="w-5 h-5 text-primary" /> {brandTrustContent.heading}
               </h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                {brandTrustContent.paragraph}
+              </p>
               <div className="space-y-3">
                 {whyAishwaryamPoints.map((point, i) => (
                   <div key={i} className="flex items-center gap-3 p-3 bg-sage-light/30 rounded-xl">
@@ -351,7 +352,7 @@ const ProductDetail = () => {
         </div>
       </section>
 
-      {/* Customer Reviews - Inline */}
+      {/* Section 7: Customer Reviews - 5 reviews per product */}
       <section className="py-8 md:py-12">
         <div className="container">
           <div className="max-w-4xl mx-auto">
@@ -372,7 +373,7 @@ const ProductDetail = () => {
             </div>
             
             <div className="grid md:grid-cols-2 gap-4">
-              {reviews.map((review, index) => (
+              {reviews.slice(0, 5).map((review, index) => (
                 <div key={index} className="bg-background p-5 rounded-xl shadow-soft relative">
                   <Quote className="absolute top-4 right-4 w-6 h-6 text-primary/10" />
                   
@@ -409,7 +410,7 @@ const ProductDetail = () => {
         </div>
       </section>
 
-      {/* Final CTA Block */}
+      {/* Section 8: Final CTA Block */}
       <section className="py-8 md:py-12 bg-primary/5">
         <div className="container">
           <div className="max-w-2xl mx-auto text-center">
@@ -433,7 +434,7 @@ const ProductDetail = () => {
               <Button asChild variant="whatsapp" size="lg">
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  Order on WhatsApp
+                  Order / Ask on WhatsApp
                 </a>
               </Button>
             </div>
