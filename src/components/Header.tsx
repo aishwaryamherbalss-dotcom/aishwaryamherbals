@@ -16,6 +16,7 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "Best Sellers", href: "/best-sellers" },
   { name: "Combos", href: "/combos" },
+  { name: "Festival Collection", href: "/festival-collection" },
   { name: "About Us", href: "/about" },
   { name: "Reviews", href: "/reviews" },
   { name: "Contact", href: "/contact" },
