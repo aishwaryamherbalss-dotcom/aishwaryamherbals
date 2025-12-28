@@ -21,6 +21,7 @@ export interface HeroSlide {
   headline: string;
   headlineHighlight: string;
   headlineSuffix: string;
+  headlineTamil?: string;
   subtext: string;
   subtextSuffix: string;
   trustLine: string | null;
@@ -37,6 +38,7 @@ export const heroSlides: HeroSlide[] = [
     headline: "Pure Herbal Care for",
     headlineHighlight: "Everyday Beauty",
     headlineSuffix: "& Wellness",
+    headlineTamil: "தினசரி அழகு மற்றும் ஆரோக்கியத்திற்கு தூய மூலிகை பராமரிப்பு",
     subtext: "Handmade. Honest Pricing.",
     subtextSuffix: "Trusted by Tamil Nadu Families.",
     trustLine: null,

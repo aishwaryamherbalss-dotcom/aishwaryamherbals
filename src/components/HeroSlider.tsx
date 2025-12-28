@@ -112,6 +112,13 @@ export const HeroSlider = () => {
                       {slide.headlineSuffix && ` ${slide.headlineSuffix}`}
                     </h1>
 
+                    {/* Tamil Subtitle */}
+                    {slide.headlineTamil && (
+                      <p className="text-base md:text-lg text-muted-foreground animate-fade-in-up animation-delay-100">
+                        {slide.headlineTamil}
+                      </p>
+                    )}
+
                     {/* Subtext */}
                     <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-200">
                       <span className="font-medium text-foreground">{slide.subtext}</span>{" "}
