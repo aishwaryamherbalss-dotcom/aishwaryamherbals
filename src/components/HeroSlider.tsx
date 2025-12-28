@@ -135,9 +135,14 @@ export const HeroSlider = () => {
                     {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start animate-fade-in-up animation-delay-600">
                       <Button asChild variant="hero" size="xl" className="group h-14 text-base md:text-lg touch-target">
-                        <Link to={slide.ctaPrimary.link}>
-                          {slide.ctaPrimary.text}
-                          <span className="group-hover:translate-x-1 transition-transform ml-2">→</span>
+                        <Link to={slide.ctaPrimary.link} className="flex flex-col items-center gap-0.5">
+                          <span className="flex items-center">
+                            {slide.ctaPrimary.text}
+                            <span className="group-hover:translate-x-1 transition-transform ml-2">→</span>
+                          </span>
+                          {slide.ctaPrimary.textTamil && (
+                            <span className="text-xs font-normal opacity-90">{slide.ctaPrimary.textTamil}</span>
+                          )}
                         </Link>
                       </Button>
                       <a
