@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { Eye, ShoppingBag, MapPin } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Eye, ShoppingBag } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 // Configuration flag to enable/disable social proof notifications
 export const SOCIAL_PROOF_ENABLED = true;
@@ -20,32 +21,51 @@ const notifications = [
 export const SocialProofToast = () => {
   const [currentNotification, setCurrentNotification] = useState<typeof notifications[0] | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const hasShownOnPageRef = useRef(false);
+  const location = useLocation();
+
+  // Disable on cart and checkout pages
+  const isDisabledPage = location.pathname === '/cart' || location.pathname === '/checkout';
+
+  // Reset the page view tracker when route changes
+  useEffect(() => {
+    hasShownOnPageRef.current = false;
+  }, [location.pathname]);
 
   useEffect(() => {
-    if (!SOCIAL_PROOF_ENABLED) return;
+    if (!SOCIAL_PROOF_ENABLED || isDisabledPage) return;
 
-    // Initial delay before first notification
+    // Initial delay before first notification (10 seconds)
     const initialDelay = setTimeout(() => {
-      showRandomNotification();
-    }, 10000); // 10 seconds initial delay
+      if (!hasShownOnPageRef.current) {
+        showRandomNotification();
+      }
+    }, 10000);
 
-    // Set up interval for subsequent notifications
+    // Set up interval for subsequent notifications - 30 seconds minimum
     const interval = setInterval(() => {
-      showRandomNotification();
-    }, 25000); // Every 25 seconds
+      // Only show one per page view
+      if (!hasShownOnPageRef.current) {
+        showRandomNotification();
+      }
+    }, 30000);
 
     return () => {
       clearTimeout(initialDelay);
       clearInterval(interval);
     };
-  }, []);
+  }, [isDisabledPage, location.pathname]);
 
   const showRandomNotification = () => {
+    // Limit to one popup per page view
+    if (hasShownOnPageRef.current) return;
+    
     const randomIndex = Math.floor(Math.random() * notifications.length);
     const notification = notifications[randomIndex];
     
     setCurrentNotification(notification);
     setIsVisible(true);
+    hasShownOnPageRef.current = true;
 
     // Hide after 5 seconds
     setTimeout(() => {
@@ -53,7 +73,7 @@ export const SocialProofToast = () => {
     }, 5000);
   };
 
-  if (!SOCIAL_PROOF_ENABLED || !currentNotification || !isVisible) {
+  if (!SOCIAL_PROOF_ENABLED || isDisabledPage || !currentNotification || !isVisible) {
     return null;
   }
 

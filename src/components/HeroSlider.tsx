@@ -156,20 +156,20 @@ export const HeroSlider = () => {
                         className="w-full h-full object-cover object-center"
                         onError={handleImageError}
                       />
-                      {/* Floating Badge - Products from ₹60 with Framer Motion */}
+                      {/* Floating Badge - Products from ₹60 with Framer Motion - Static on mobile, animated on desktop */}
                       <motion.div
-                        className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-background/95 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-4 shadow-soft"
+                        className="absolute bottom-3 left-3 md:bottom-6 md:left-6 bg-background/95 backdrop-blur-sm rounded-lg md:rounded-2xl p-2.5 md:p-4 shadow-soft"
                         animate={badgeAnimation}
                         transition={badgeTransition}
                       >
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                            <span className="text-xl md:text-2xl">🌿</span>
+                        <div className="flex items-center gap-2 md:gap-3">
+                          <div className="w-8 h-8 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <span className="text-base md:text-2xl">🌿</span>
                           </div>
                           <div>
-                            <p className="text-xs md:text-sm text-muted-foreground">Products from</p>
-                            <p className="font-serif text-lg md:text-xl font-semibold text-primary">₹60</p>
-                            <p className="text-xs text-muted-foreground">Honest Everyday Pricing</p>
+                            <p className="text-[10px] md:text-sm text-muted-foreground">Products from</p>
+                            <p className="font-serif text-base md:text-xl font-semibold text-primary">₹60</p>
+                            <p className="text-[10px] md:text-xs text-muted-foreground">Honest Everyday Pricing</p>
                           </div>
                         </div>
                       </motion.div>
