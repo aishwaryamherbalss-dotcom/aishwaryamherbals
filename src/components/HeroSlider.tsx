@@ -47,18 +47,24 @@ export const HeroSlider = () => {
     e.currentTarget.src = HERO_FALLBACK_IMAGE;
   };
 
-  // Badge animation config
-  const badgeAnimation = {
-    scale: [1, 1.02, 1],
+  // Check for reduced motion preference
+  const prefersReducedMotion = typeof window !== 'undefined' 
+    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches 
+    : false;
+
+  // Premium micro-bounce pulse animation config
+  const badgeAnimation = prefersReducedMotion ? {} : {
+    y: [0, -2, 0],
+    scale: [1, 1.03, 1],
     boxShadow: [
-      "0 4px 12px rgba(var(--primary-rgb), 0.15)",
-      "0 6px 20px rgba(var(--primary-rgb), 0.25)",
-      "0 4px 12px rgba(var(--primary-rgb), 0.15)",
+      "0 4px 12px hsl(142 25% 45% / 0.12)",
+      "0 8px 24px hsl(142 25% 45% / 0.22)",
+      "0 4px 12px hsl(142 25% 45% / 0.12)",
     ],
   };
 
   const badgeTransition = {
-    duration: 2.2,
+    duration: 1.8,
     ease: [0.42, 0, 0.58, 1] as [number, number, number, number],
     repeat: Infinity,
     repeatType: "mirror" as const,

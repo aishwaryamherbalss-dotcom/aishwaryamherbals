@@ -1,5 +1,6 @@
-import { Star, ShoppingCart } from "lucide-react";
+import { Star, ShoppingCart, Eye } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 import productSerum from "@/assets/product-serum.jpg";
 import productShampoo from "@/assets/product-shampoo.jpg";
 import productFacepack from "@/assets/product-facepack.jpg";
@@ -8,6 +9,7 @@ import productSoap from "@/assets/product-soap.jpg";
 const products = [
   {
     id: 1,
+    slug: "herbal-hair-growth-serum",
     name: "Herbal Hair Growth Serum",
     benefit: "Gentle daily care for healthy hair",
     price: 299,
@@ -19,6 +21,7 @@ const products = [
   },
   {
     id: 2,
+    slug: "natural-herbal-shampoo",
     name: "Natural Herbal Shampoo",
     benefit: "Light, non-sticky, suitable for everyday use",
     price: 149,
@@ -30,6 +33,7 @@ const products = [
   },
   {
     id: 3,
+    slug: "turmeric-glow-face-pack",
     name: "Turmeric Glow Face Pack",
     benefit: "Natural glow for everyday freshness",
     price: 199,
@@ -41,6 +45,7 @@ const products = [
   },
   {
     id: 4,
+    slug: "rose-petal-herbal-soap",
     name: "Rose Petal Herbal Soap",
     benefit: "Safe for regular family use",
     price: 79,
@@ -77,30 +82,34 @@ export const BestSellers = () => {
               className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Image Container */}
-              <div className="relative aspect-square overflow-hidden bg-cream">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-                {product.badge && (
-                  <div className={`absolute top-2 left-2 md:top-3 md:left-3 px-2 md:px-3 py-1 text-xs font-semibold rounded-full ${
-                    product.badge === "Most Loved by Women" 
-                      ? "bg-accent text-accent-foreground" 
-                      : "bg-primary text-primary-foreground"
-                  }`}>
-                    {product.badge}
-                  </div>
-                )}
-              </div>
+              {/* Image Container - Clickable */}
+              <Link to={`/product/${product.slug}`} className="block">
+                <div className="relative aspect-square overflow-hidden bg-cream">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  {product.badge && (
+                    <div className={`absolute top-2 left-2 md:top-3 md:left-3 px-2 md:px-3 py-1 text-xs font-semibold rounded-full ${
+                      product.badge === "Most Loved by Women" 
+                        ? "bg-accent text-accent-foreground" 
+                        : "bg-primary text-primary-foreground"
+                    }`}>
+                      {product.badge}
+                    </div>
+                  )}
+                </div>
+              </Link>
 
               {/* Content */}
               <div className="p-3 md:p-5">
-                <h3 className="font-serif text-sm md:text-lg font-semibold text-foreground mb-1 line-clamp-2 leading-tight">
-                  {product.name}
-                </h3>
+                <Link to={`/product/${product.slug}`} className="block hover:text-primary transition-colors">
+                  <h3 className="font-serif text-sm md:text-lg font-semibold text-foreground mb-1 line-clamp-2 leading-tight group-hover:text-primary transition-colors">
+                    {product.name}
+                  </h3>
+                </Link>
                 <p className="text-xs md:text-sm text-muted-foreground mb-1 line-clamp-1">
                   {product.benefit}
                 </p>
@@ -128,11 +137,20 @@ export const BestSellers = () => {
                 </div>
 
                 {/* Price */}
-                <div className="flex items-center gap-2 mb-3 md:mb-4">
+                <div className="flex items-center gap-2 mb-2">
                   <span className="font-serif text-lg md:text-2xl font-bold text-primary">
                     ₹{product.price}
                   </span>
                 </div>
+
+                {/* View Product Link */}
+                <Link 
+                  to={`/product/${product.slug}`} 
+                  className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors mb-3"
+                >
+                  <Eye className="w-3 h-3" />
+                  View Product
+                </Link>
 
                 {/* Add to Cart */}
                 <Button variant="soft" size="sm" className="w-full gap-2 h-10 md:h-11 text-sm md:text-base touch-target">
@@ -146,8 +164,8 @@ export const BestSellers = () => {
 
         {/* View All Button */}
         <div className="text-center mt-8 md:mt-10">
-          <Button variant="outline" size="lg" className="h-12 px-8 touch-target">
-            View All Products
+          <Button asChild variant="outline" size="lg" className="h-12 px-8 touch-target">
+            <Link to="/shop">View All Products</Link>
           </Button>
         </div>
       </div>
