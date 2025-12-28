@@ -6,19 +6,21 @@ import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { MobileBottomBar } from "@/components/MobileBottomBar";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
-interface PageLayoutProps {
+export interface PageLayoutProps {
   children: ReactNode;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 }
 
 export const PageLayout = ({ children, title, description }: PageLayoutProps) => {
   return (
     <>
-      <Helmet>
-        <title>{title} | Aishwaryam Herbals</title>
-        <meta name="description" content={description} />
-      </Helmet>
+      {title && description && (
+        <Helmet>
+          <title>{title} | Aishwaryam Herbals</title>
+          <meta name="description" content={description} />
+        </Helmet>
+      )}
 
       <div className="min-h-screen bg-background pb-20 md:pb-0">
         <AnnouncementBar />

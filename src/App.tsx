@@ -23,6 +23,7 @@ import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Auth from "./pages/Auth";
+import FestivalCollection from "./pages/FestivalCollection";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => (
                 <Route path="/shop/face-packs" element={<CategoryFacePacks />} />
                 <Route path="/best-sellers" element={<BestSellersPage />} />
                 <Route path="/combos" element={<CombosPage />} />
+                <Route path="/festival-collection" element={<FestivalCollection />} />
                 <Route path="/product/:slug" element={<ProductDetail />} />
                 <Route path="/combo/:slug" element={<ComboDetail />} />
                 <Route path="/about" element={<About />} />
