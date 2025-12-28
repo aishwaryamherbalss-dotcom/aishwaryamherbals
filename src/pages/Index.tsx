@@ -4,6 +4,7 @@ import { HeroSlider } from "@/components/HeroSlider";
 import { TrustBar } from "@/components/TrustBar";
 import { TrustSignals } from "@/components/TrustSignals";
 import { BestSellers } from "@/components/BestSellers";
+import { VideoSection } from "@/components/VideoSection";
 import { StarterCombos } from "@/components/StarterCombos";
 import { WhyAishwaryam } from "@/components/WhyAishwaryam";
 import { CustomerReviews } from "@/components/CustomerReviews";
@@ -36,6 +37,7 @@ const Index = () => {
           <TrustBar />
           <TrustSignals />
           <BestSellers />
+          <VideoSection />
           <StarterCombos />
           <WhyAishwaryam />
           <CustomerReviews />
