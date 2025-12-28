@@ -52,12 +52,22 @@ export const HeroSlider = () => {
     ? window.matchMedia('(prefers-reduced-motion: reduce)').matches 
     : false;
 
-  // Subtle fade-in animation for badge
-  const badgeInitial = { opacity: 0, y: -10 };
-  const badgeAnimate = { opacity: 1, y: 0 };
+  // Premium micro-bounce pulse animation config
+  const badgeAnimation = prefersReducedMotion ? {} : {
+    y: [0, -2, 0],
+    scale: [1, 1.03, 1],
+    boxShadow: [
+      "0 4px 12px hsl(142 25% 45% / 0.12)",
+      "0 8px 24px hsl(142 25% 45% / 0.22)",
+      "0 4px 12px hsl(142 25% 45% / 0.12)",
+    ],
+  };
+
   const badgeTransition = {
-    duration: 0.5,
-    ease: "easeOut" as const,
+    duration: 1.8,
+    ease: [0.42, 0, 0.58, 1] as [number, number, number, number],
+    repeat: Infinity,
+    repeatType: "mirror" as const,
   };
 
   return (
@@ -164,20 +174,20 @@ export const HeroSlider = () => {
                         className="w-full h-full object-cover object-center"
                         onError={handleImageError}
                       />
-                      {/* Floating Badge - Products from ₹60 - Top Left positioning */}
+                      {/* Floating Badge - Products from ₹60 with Framer Motion - Static on mobile, animated on desktop */}
                       <motion.div
-                        className="absolute top-3 left-3 md:top-5 md:left-5 bg-background/95 backdrop-blur-sm rounded-lg md:rounded-xl p-2 md:p-3 shadow-soft"
-                        initial={badgeInitial}
-                        animate={badgeAnimate}
+                        className="absolute bottom-3 left-3 md:bottom-6 md:left-6 bg-background/95 backdrop-blur-sm rounded-lg md:rounded-2xl p-2.5 md:p-4 shadow-soft"
+                        animate={badgeAnimation}
                         transition={badgeTransition}
                       >
-                        <div className="flex items-center gap-1.5 md:gap-2">
-                          <div className="w-6 h-6 md:w-9 md:h-9 bg-primary/10 rounded-full flex items-center justify-center">
-                            <span className="text-sm md:text-lg">🌿</span>
+                        <div className="flex items-center gap-2 md:gap-3">
+                          <div className="w-8 h-8 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <span className="text-base md:text-2xl">🌿</span>
                           </div>
                           <div>
-                            <p className="text-[9px] md:text-xs text-muted-foreground leading-tight">Products from</p>
-                            <p className="font-serif text-sm md:text-lg font-semibold text-primary leading-tight">₹60</p>
+                            <p className="text-[10px] md:text-sm text-muted-foreground">Products from</p>
+                            <p className="font-serif text-base md:text-xl font-semibold text-primary">₹60</p>
+                            <p className="text-[10px] md:text-xs text-muted-foreground">Honest Everyday Pricing</p>
                           </div>
                         </div>
                       </motion.div>
