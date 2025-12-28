@@ -35,11 +35,12 @@ const Index = () => {
         <main>
           <HeroSlider />
           <TrustBar />
-          <TrustSignals />
           <BestSellers />
           <VideoSection />
           <StarterCombos />
           <WhyAishwaryam />
+          {/* Trust section - scroll target for "Buy with Confidence" */}
+          <TrustSignals />
           <CustomerReviews />
         </main>
         

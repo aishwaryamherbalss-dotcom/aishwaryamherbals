@@ -1,4 +1,4 @@
-import { Leaf, IndianRupee, Heart, Users } from "lucide-react";
+import { Leaf, IndianRupee, Heart, Shield } from "lucide-react";
 
 const trustItems = [
   {
@@ -8,16 +8,16 @@ const trustItems = [
   },
   {
     icon: IndianRupee,
-    title: "Honest Pricing Daily",
-    description: "What we say is what you pay. Always.",
+    title: "No Fake Offers",
+    description: "Honest Everyday Pricing. What we say is what you pay.",
   },
   {
     icon: Heart,
-    title: "Made for Women",
+    title: "Safe for Regular Use",
     description: "Gentle care designed for everyday beauty",
   },
   {
-    icon: Users,
+    icon: Shield,
     title: "Loved by Families",
     description: "Trusted by 10,000+ Tamil Nadu homes",
   },
@@ -25,7 +25,7 @@ const trustItems = [
 
 export const TrustSignals = () => {
   return (
-    <section className="py-10 md:py-16 bg-secondary/50">
+    <section id="trust-section" className="py-10 md:py-16 bg-secondary/50 scroll-mt-20">
       <div className="container">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
           {trustItems.map((item, index) => (
