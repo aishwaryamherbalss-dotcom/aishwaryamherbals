@@ -24,7 +24,6 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Auth from "./pages/Auth";
 import FestivalCollection from "./pages/FestivalCollection";
-import FestivalLanding from "./pages/FestivalLanding";
 
 const queryClient = new QueryClient();
 
@@ -46,7 +45,6 @@ const App = () => (
                 <Route path="/best-sellers" element={<BestSellersPage />} />
                 <Route path="/combos" element={<CombosPage />} />
                 <Route path="/festival-collection" element={<FestivalCollection />} />
-                <Route path="/festival-landing" element={<FestivalLanding />} />
                 <Route path="/product/:slug" element={<ProductDetail />} />
                 <Route path="/combo/:slug" element={<ComboDetail />} />
                 <Route path="/about" element={<About />} />
