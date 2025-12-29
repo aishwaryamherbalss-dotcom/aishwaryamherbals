@@ -53,8 +53,8 @@ export const FestivalHero = () => {
   );
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      {/* Full-Screen Image Slider */}
+    <section className="relative w-full overflow-hidden h-[52vh] md:h-[60vh] lg:h-[75vh]">
+      {/* Full-Width Image Slider */}
       <div className="h-full w-full" ref={emblaRef}>
         <div className="flex h-full">
           {heroSlides.map((slide) => (
