@@ -125,6 +125,16 @@ export const HeroSlider = () => {
                       {slide.subtextSuffix}
                     </p>
 
+                    {/* Manufacturing Trust Line */}
+                    <div className="animate-fade-in-up animation-delay-300">
+                      <p className="text-sm text-muted-foreground">
+                        Handcrafted in our own facility since 2016.
+                      </p>
+                      <p className="text-xs text-muted-foreground/80 mt-0.5">
+                        2016 முதல் எங்களின் சொந்த தயாரிப்பகம் மூலம் தயாரிப்பு.
+                      </p>
+                    </div>
+
                     {/* Optional Trust Line */}
                     {slide.trustLine && (
                       <p className="text-base text-olive-muted animate-fade-in-up animation-delay-400">
@@ -170,18 +180,18 @@ export const HeroSlider = () => {
                       />
                       {/* Floating Badge - Products from ₹60 with Framer Motion - Positioned top-right to avoid product overlap */}
                       <motion.div
-                        className="absolute top-3 right-3 md:top-6 md:right-6 bg-background/95 backdrop-blur-sm rounded-lg md:rounded-2xl px-2 py-2.5 md:px-3 md:py-4 shadow-soft"
+                        className="absolute top-3 right-3 md:top-6 md:right-6 bg-background/95 backdrop-blur-sm rounded-lg md:rounded-2xl px-1.5 py-2 md:px-2.5 md:py-3.5 shadow-soft"
                         animate={badgeAnimation}
                         transition={badgeTransition}
                       >
-                        <div className="flex items-center gap-2 md:gap-3">
-                          <div className="w-8 h-8 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                            <span className="text-base md:text-2xl">🌿</span>
+                        <div className="flex items-center gap-1.5 md:gap-2.5">
+                          <div className="w-7 h-7 md:w-10 md:h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                            <span className="text-sm md:text-xl">🌿</span>
                           </div>
-                          <div>
-                            <p className="text-[10px] md:text-sm text-muted-foreground">Products from</p>
-                            <p className="font-serif text-base md:text-xl font-semibold text-primary">₹60</p>
-                            <p className="text-[10px] md:text-xs text-muted-foreground">Honest Everyday Pricing</p>
+                          <div className="text-center">
+                            <p className="text-[9px] md:text-xs text-muted-foreground">Products from</p>
+                            <p className="font-serif text-sm md:text-lg font-semibold text-primary">₹60</p>
+                            <p className="text-[9px] md:text-xs text-muted-foreground">Honest Everyday Pricing</p>
                           </div>
                         </div>
                       </motion.div>
