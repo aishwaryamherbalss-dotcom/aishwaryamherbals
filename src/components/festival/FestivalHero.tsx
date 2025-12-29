@@ -24,6 +24,11 @@ const heroSlides = [
     image: "/lovable-uploads/45d06192-4f01-4e29-9713-a13ca2ceff8b.png",
     alt: "Festival Collection Slide 4",
   },
+  {
+    id: 5,
+    image: "/lovable-uploads/a6f60886-1197-452f-b145-4244fcef2dba.png",
+    alt: "Festival Collection Slide 5",
+  },
 ];
 
 export const FestivalHero = () => {
